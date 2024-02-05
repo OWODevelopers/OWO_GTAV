@@ -2,6 +2,7 @@
 #include "OWOAPI/Domain/SensationsFactory.h"
 #include "OWOAPI/Domain/Muscle.h"
 
+
 void FeelRecoil::Execute()
 {
 	if (lastWeapon != playerInventory->CurrentWeapon())
@@ -13,7 +14,9 @@ void FeelRecoil::Execute()
 
 	if (playerInventory->CurrentAmmo() < lastAmmo)
 	{
-		owo->Send(playerInventory->RecoilSensation());
+		auto sensation = playerInventory->RecoilSensation();
+		sensation->SetPriority(FeelRecoil::Priority);
+		owo->Send(movePtr(sensation));
 	}
 
 	lastAmmo = playerInventory->CurrentAmmo();

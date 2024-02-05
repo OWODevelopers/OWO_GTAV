@@ -79,12 +79,25 @@ namespace OWOGTAVTESTS
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
 			auto sut = CreateSut(mock, inventory);
 
-			inventory->toBeFelt = SensationsFactory::Create(10)->WithMuscles({ Muscle::Pectoral_R()});
 			sut.Execute();
+			inventory->toBeFelt = SensationsFactory::Create(10)->WithMuscles({ Muscle::Pectoral_R()});
 			inventory->ammo--;
 			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsFactory::Create(10)));
+		}
+
+		TEST_METHOD(SetPriority_ToRecoilSensation)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
+			auto sut = CreateSut(mock, inventory);
+
+			sut.Execute();
+			inventory->ammo--;
+			sut.Execute();
+
+			Assert::AreEqual(FeelRecoil::Priority, mock->WhatFelt->GetPriority());
 		}
 	};
 }
