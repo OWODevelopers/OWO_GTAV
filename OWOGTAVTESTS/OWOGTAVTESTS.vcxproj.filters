@@ -30,12 +30,18 @@
     <ClCompile Include="RecoilTests.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="MockInventory.cpp">
+      <Filter>Mocks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HapticDevice.h">
       <Filter>Mocks</Filter>
     </ClInclude>
     <ClInclude Include="MockBody.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="MockInventory.h">
       <Filter>Mocks</Filter>
     </ClInclude>
   </ItemGroup>

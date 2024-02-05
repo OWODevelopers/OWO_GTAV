@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleLogger.cpp" />
+    <ClCompile Include="FeelRecoil.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
@@ -19,8 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
+    <ClInclude Include="FeelRecoil.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="PlayerBody.h" />
+    <ClInclude Include="PlayerInventory.h" />
     <ClInclude Include="script.h" />
     <ClInclude Include="FeelDamage.h" />
   </ItemGroup>

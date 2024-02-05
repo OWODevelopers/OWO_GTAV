@@ -1,8 +1,8 @@
 #include "CppUnitTest.h"
 #include "HapticDevice.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
-#include "MockBody.h"
-#include "../FeelDamage.h"
+#include "MockInventory.h"
+#include "../FeelRecoil.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -10,23 +10,17 @@ namespace OWOGTAVTESTS
 {
 	TEST_CLASS(RecoilTests)
 	{
-	public:
-		FeelDamage CreateSut(sharedPtr<OWOGame::OWO> device = nullptr, sharedPtr<PlayerBody> body = nullptr)
-		{
-			sharedPtr<OWO> mock = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
-			sharedPtr<PlayerBody> mockBody = body == nullptr ? CreateNewUnique(MockBody, MockBody(MusclesGroup({ Muscle::Arm_L() }))) : body;
-			return FeelDamage(mock, mockBody);
-		}
+	public:		
 
-		TEST_METHOD(FeelDamage_WhenHealthIs_BelowPreviousHealth)
+		TEST_METHOD(FeelRecoil_WhenShooting)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
-			auto sut = CreateSut(mock);
+			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
+			auto sut = FeelRecoil(mock, inventory);
 
-			sut.Execute(100);
-			sut.Execute(90);
+			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelAnything());
 		}
-	}
+	};
 }
