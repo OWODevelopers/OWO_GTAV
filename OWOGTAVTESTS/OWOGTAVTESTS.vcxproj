@@ -162,6 +162,7 @@
     <ClCompile Include="HapticDevice.cpp" />
     <ClCompile Include="MockBody.cpp" />
     <ClCompile Include="OWOGTAVTESTS.cpp" />
+    <ClCompile Include="RecoilTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HapticDevice.h" />
