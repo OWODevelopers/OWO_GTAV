@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Domain">
+      <UniqueIdentifier>{71530a4a-41bb-4ef7-912c-08b3d7a785cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Headers">
+      <UniqueIdentifier>{83630195-881a-4774-a0dc-5a790fa6cad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Source">
+      <UniqueIdentifier>{2fab795a-91c9-4994-ba29-ec603bb55863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{c6ec9996-24de-41e2-8b7d-fb61716d0624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller\Headers">
+      <UniqueIdentifier>{5ceb1a9d-dbe4-430b-8252-41d395f08ab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller\Source">
+      <UniqueIdentifier>{7249a038-3a66-4115-ba0d-f1f59b226979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller\Headers\Abstractions">
+      <UniqueIdentifier>{e899b4a0-751b-44b7-adb6-94de777f2013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API">
+      <UniqueIdentifier>{23871cae-6294-459a-a35d-be415ab54806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Headers">
+      <UniqueIdentifier>{5fe40887-0075-460a-9f8b-60a2a1e9209c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Source">
+      <UniqueIdentifier>{2a204e6d-6bc3-4366-acbc-c974069f745f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Controller\Network.h">
+      <Filter>Controller\Headers\Abstractions</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\BakedSensation.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\BakedSensationsParser.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\GameAuth.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Math.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Microsensation.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\MicroSensationParser.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Muscle.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\MusclesGroup.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\MusclesParser.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Sensation.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\SensationsBaker.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\SensationsFactory.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\SensationsParser.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\SensationsSequence.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\SensationsSequenceParser.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\SensationWithMuscles.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\SensationWithMusclesParser.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\String.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\Authenticate.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\Client.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\FindServer.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\Message.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\NotifyAbscense.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\SecretKeysVault.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\SendAuthMessage.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\SendEncryptedMessage.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\SendSensation.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\StopSensation.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientFactory.h">
+      <Filter>API\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Exceptions.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\ScanAvailableServers.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\OWO.h">
+      <Filter>Controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\OWOTypes.h">
+      <Filter>Domain\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Infraestructure\UDPNetwork.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Domain\BakedSensation.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\BakedSensationsParser.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\GameAuth.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\Microsensation.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\MicroSensationParser.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\Muscle.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\MusclesGroup.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\MusclesParser.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\SensationsBaker.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\SensationsFactory.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\SensationsParser.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\SensationsSequence.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\SensationsSequenceParser.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\SensationWithMuscles.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\SensationWithMusclesParser.cpp">
+      <Filter>Domain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\Authenticate.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\Client.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\FindServer.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\NotifyAbscense.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\SecretKeysVault.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\SendAuthMessage.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\SendEncryptedMessage.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\SendSensation.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\StopSensation.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientFactory.cpp">
+      <Filter>API\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\ScanAvailableServers.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\OWO.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Infraestructure\UDPNetwork.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
+</Project>
