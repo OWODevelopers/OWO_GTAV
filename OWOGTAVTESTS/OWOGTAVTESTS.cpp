@@ -54,7 +54,7 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->DidFeelAnything());
 		}
 
-		TEST_METHOD(DontFeelNoDamage)
+		TEST_METHOD(DontFeel_NoDamage)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			auto sut = CreateSut(mock);
@@ -65,7 +65,7 @@ namespace OWOGTAVTESTS
 			Assert::IsFalse(mock->DidFeelAnything());
 		}
 
-		TEST_METHOD(FeelOnRightMuscle)
+		TEST_METHOD(FeelOn_RightMuscle)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({Muscle::Abdominal_R()})));
@@ -77,7 +77,7 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->DidFeelIn(Muscle::Abdominal_R().WithIntensity(20)));
 		}
 
-		TEST_METHOD(Feel_AtHigherIntensity_ThanLowest)
+		TEST_METHOD(FeelAt_HigherIntensity_ThanLowest)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({ Muscle::Abdominal_R() })));
@@ -89,7 +89,7 @@ namespace OWOGTAVTESTS
 			Assert::IsFalse(mock->DidFeelIn(Muscle::Abdominal_R().WithIntensity(20)));
 		}
 
-		TEST_METHOD(Feel_Based_On_damageType)
+		TEST_METHOD(FeelBasedOn_DamageType)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({ Muscle::Abdominal_R() })));
