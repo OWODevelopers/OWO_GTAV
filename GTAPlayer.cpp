@@ -48,12 +48,12 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
 {
 
     if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), 0, 2)) {
-        for (auto weaponTypes : weapons)
+        for (int i = 0; i < weapons.size(); i++)
         {
-            for (auto weapon : weaponTypes.weapons)
+            for (auto weapon : weapons[i].weapons)
             {
                 if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), weapon, 0))
-                    return movePtr(weaponTypes.toBeFelt);
+                    return weapons[i].toBeFelt->Clone();
             }
         }
     }

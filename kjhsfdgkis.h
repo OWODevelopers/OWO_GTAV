@@ -7,10 +7,10 @@ class SensationOfWeapons
 {
 public:
 	std::vector<Hash> weapons = { };
-	uniquePtr<OWOGame::Sensation> toBeFelt = nullptr;
+	sharedPtr<OWOGame::Sensation> toBeFelt = nullptr;
 
-	SensationOfWeapons(std::vector<Hash> weapons, uniquePtr<OWOGame::Sensation> sensation) 
-		:  weapons(weapons), toBeFelt(movePtr(sensation)) {}
+	SensationOfWeapons(std::vector<Hash> weapons, sharedPtr<OWOGame::Sensation> sensation)
+		:  weapons(weapons), toBeFelt(sensation) {}
 
 	bool HasSensationFor(Hash weapon);
 };
