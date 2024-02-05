@@ -7,6 +7,7 @@ class FeelRecoil
 private:
 	sharedPtr<OWOGame::OWO> owo = nullptr;
 	sharedPtr<PlayerInventory> playerInventory = nullptr;
+	int lastAmmo = 0;
 
 public:
 	FeelRecoil(sharedPtr<OWOGame::OWO> device, sharedPtr<PlayerInventory> inventory) : owo(device), playerInventory(inventory){}

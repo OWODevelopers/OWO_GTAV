@@ -19,6 +19,8 @@ namespace OWOGTAVTESTS
 			auto sut = FeelRecoil(mock, inventory);
 
 			sut.Execute();
+			inventory->ammo--;
+			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelAnything());
 		}

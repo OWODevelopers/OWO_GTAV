@@ -4,5 +4,10 @@
 
 void FeelRecoil::Execute()
 {
-	owo->Send(OWOGame::SensationsFactory::Create()->WithMuscles({OWOGame::Muscle::Abdominal_L()}));
+	if (playerInventory->CurrentAmmo() < lastAmmo)
+	{
+		owo->Send(OWOGame::SensationsFactory::Create()->WithMuscles({OWOGame::Muscle::Abdominal_L()}));
+	}
+
+	lastAmmo = playerInventory->CurrentAmmo();
 }
