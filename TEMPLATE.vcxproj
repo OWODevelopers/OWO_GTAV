@@ -12,14 +12,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleLogger.cpp" />
+    <ClCompile Include="GTAPlayer.cpp" />
     <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="kjhsfdgkis.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
     <ClCompile Include="FeelDamage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
+    <ClInclude Include="GTAPlayer.h" />
     <ClInclude Include="keyboard.h" />
+    <ClInclude Include="kjhsfdgkis.h" />
     <ClInclude Include="PlayerBody.h" />
     <ClInclude Include="script.h" />
     <ClInclude Include="FeelDamage.h" />

@@ -8,6 +8,8 @@
     <ClCompile Include="FeelDamage.cpp">
       <Filter>FeelDamage</Filter>
     </ClCompile>
+    <ClCompile Include="GTAPlayer.cpp" />
+    <ClCompile Include="kjhsfdgkis.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="keyboard.h" />
@@ -19,6 +21,8 @@
     <ClInclude Include="PlayerBody.h">
       <Filter>Abstractions</Filter>
     </ClInclude>
+    <ClInclude Include="GTAPlayer.h" />
+    <ClInclude Include="kjhsfdgkis.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Abstractions">
