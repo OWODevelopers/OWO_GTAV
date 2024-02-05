@@ -7,6 +7,7 @@ void HapticDevice::Configure(sharedPtr<GameAuth> auth)
 
 void HapticDevice::Send(uniquePtr<OWOGame::Sensation> sensation)
 {
+	Received = movePtr(sensation);
 }
 
 void HapticDevice::Stop()

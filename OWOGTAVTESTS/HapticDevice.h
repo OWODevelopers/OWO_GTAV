@@ -7,7 +7,8 @@ class HapticDevice : public OWO
 {
 public:
     HapticDevice() : OWO(nullptr) {}
-    ~HapticDevice();
+    ~HapticDevice() {}
+    uniquePtr <Sensation> Received;
 
     void Configure(sharedPtr<GameAuth> auth) override;
     void Send(uniquePtr<OWOGame::Sensation> sensation) override;

@@ -1,8 +1,16 @@
 #include "CppUnitTest.h"
 #include "HapticDevice.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
+#include "../sdfgh.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+
+//1.Si la vida del personaje baja se envía sensación.
+//2.La barra de escudo y de vida se tratan como una sola.
+//3.La sensación se envía a unos músculos diferentes según punto de impacto.
+//4.La intensidad del músculo cambia según la vida restada
+//5.Actualizar la vida máxima si la vida actual (o escudo) sube en lugar de bajar.
+//6.Cambiar la sensación a enviar dependiendo del tipo de daño.
 
 namespace OWOGTAVTESTS
 {
@@ -12,19 +20,13 @@ namespace OWOGTAVTESTS
 		
 		TEST_METHOD(TestMethod1)
 		{
-			uniquePtr<OWO> owo = CreateNewUnique(OWO, HapticDevice());
+			sharedPtr<HapticDevice> mock = CreateNewUnique(HapticDevice, HapticDevice());
+			auto sut = sdfgh(mock);
 
-			owo->AutoConnect();
-			owo->ChangeUpdateFrequency(12);
-			owo->Configure(GameAuth::Parse("", "0"));
-			owo->Connect({});
-			owo->Disconnect();
-			owo->DiscoveredApps();
-			owo->Scan(15);
-			owo->State();
-			owo->Send(SensationsFactory::Create());
-			owo->Stop();
-			owo->UpdateStatus(20);
+			sut.Execute(100);
+			sut.Execute(90);
+
+			Assert::IsTrue(mock->Received != nullptr);
 		}
 	};
 }

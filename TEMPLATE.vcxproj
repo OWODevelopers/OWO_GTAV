@@ -15,11 +15,13 @@
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
+    <ClCompile Include="sdfgh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="script.h" />
+    <ClInclude Include="sdfgh.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="OWOAPI\OWOAPI.vcxproj">
