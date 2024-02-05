@@ -9,6 +9,7 @@ public:
     MockDevice() : OWO(nullptr) {}
     ~MockDevice() {}
     uniquePtr <Sensation> Received;
+    MusclesGroup LastFelt = MusclesGroup({});
 
     void Configure(sharedPtr<GameAuth> auth) override;
     void Send(uniquePtr<OWOGame::Sensation> sensation) override;
@@ -22,4 +23,6 @@ public:
     ConnectionState State() override;
 
     void ChangeUpdateFrequency(uint64_t newFrequency) override;
+
+    bool DidFeel(Muscle muscle);
 };

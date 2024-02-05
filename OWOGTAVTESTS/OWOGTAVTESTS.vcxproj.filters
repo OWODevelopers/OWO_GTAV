@@ -24,9 +24,15 @@
     <ClCompile Include="HapticDevice.cpp">
       <Filter>Mocks</Filter>
     </ClCompile>
+    <ClCompile Include="MockBody.cpp">
+      <Filter>Mocks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HapticDevice.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="MockBody.h">
       <Filter>Mocks</Filter>
     </ClInclude>
   </ItemGroup>

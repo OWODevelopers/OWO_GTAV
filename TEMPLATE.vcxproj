@@ -20,6 +20,7 @@
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
     <ClInclude Include="keyboard.h" />
+    <ClInclude Include="PlayerBody.h" />
     <ClInclude Include="script.h" />
     <ClInclude Include="sdfgh.h" />
   </ItemGroup>
@@ -65,6 +66,7 @@
     <TargetExt>.asi</TargetExt>
     <OutDir>$(LOCALAPPDATA)\FiveM\FiveM.app\plugins</OutDir>
     <IntDir>tmp\$(Configuration)\</IntDir>
+    <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugTest|x64'">
     <LinkIncremental>false</LinkIncremental>

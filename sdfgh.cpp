@@ -6,7 +6,8 @@ void sdfgh::Execute(int hp)
 {
 	if (hp < lastHealth)
 	{
-		owo->Send(OWOGame::SensationsFactory::Create());
+		owo->Send(OWOGame::SensationsFactory::Create()->WithMuscles(body->LastHit()));
 	}
+
 	lastHealth = hp;
 }

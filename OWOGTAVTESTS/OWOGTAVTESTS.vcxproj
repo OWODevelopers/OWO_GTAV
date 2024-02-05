@@ -160,10 +160,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="HapticDevice.cpp" />
+    <ClCompile Include="MockBody.cpp" />
     <ClCompile Include="OWOGTAVTESTS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HapticDevice.h" />
+    <ClInclude Include="MockBody.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OWOAPI\OWOAPI.vcxproj">
