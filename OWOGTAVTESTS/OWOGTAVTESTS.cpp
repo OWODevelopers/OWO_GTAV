@@ -51,5 +51,15 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->Received != nullptr);
 		}
 
+		TEST_METHOD(DontFeelNoDamage)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			auto sut = sdfgh(mock);
+
+			sut.Execute(45);
+			sut.Execute(45);
+
+			Assert::IsTrue(mock->Received == nullptr);
+		}
 	};
 }
