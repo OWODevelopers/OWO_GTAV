@@ -36,5 +36,36 @@ namespace OWOGTAVTESTS
 
 			Assert::IsFalse(mock->DidFeelAnything());
 		}
+
+		TEST_METHOD(DoNotFeel_Reload) 
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
+			auto sut = FeelRecoil(mock, inventory);
+
+			inventory->ammo = 10;
+			sut.Execute();
+			inventory->ammo = 15;
+			sut.Execute();
+
+			Assert::IsFalse(mock->DidFeelAnything());
+		}
+
+		TEST_METHOD(ResetAmmo_OnWeaponChange_WithLessAmmo)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
+			auto sut = FeelRecoil(mock, inventory);
+
+			inventory->currentWeapon = 0;
+			inventory->ammo = 10;
+			sut.Execute();
+			inventory->currentWeapon = 1;
+			inventory->ammo = 5;
+			sut.Execute();
+
+			Assert::IsFalse(mock->DidFeelAnything());
+
+		}
 	};
 }
