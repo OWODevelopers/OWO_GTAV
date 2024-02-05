@@ -1,6 +1,6 @@
 #include "kjhsfdgkis.h"
 
-bool erjdlfas::HasSensationFor(Hash aWeapon)
+bool SensationOfWeapons::HasSensationFor(Hash aWeapon)
 {
     for (auto weapon : weapons)
     {

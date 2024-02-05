@@ -3,6 +3,12 @@
 #include <natives.h>
 #include <types.h>
 
+//1. Sentir daño por arma
+//2. Sentir daño por vehículo
+//3. Sentir daño por caída
+//4. Sentir por ahogamiento
+//5. Sentir aviso de no implementada
+
 using namespace OWOGame;
 
 MusclesGroup GetMusclesFrom(Hash bones) 
@@ -40,5 +46,17 @@ MusclesGroup GTAPlayer::LastHit()
 
 uniquePtr<Sensation> GTAPlayer::DamageFelt()
 {
-    return OWOGame::SensationsFactory::Create();
+
+    if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), 0, 2)) {
+        for (auto weaponTypes : weapons)
+        {
+            for (auto weapon : weaponTypes.weapons)
+            {
+                if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), weapon, 0))
+                    return movePtr(weaponTypes.toBeFelt);
+            }
+        }
+    }
+
+    
 }
