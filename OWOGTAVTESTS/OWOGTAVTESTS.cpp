@@ -19,7 +19,7 @@ namespace OWOGTAVTESTS
 		sdfgh Createasdfasfads(sharedPtr<OWOGame::OWO> device = nullptr, sharedPtr<PlayerBody> body = nullptr) 
 		{
 			sharedPtr<OWO> mock = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
-			sharedPtr<PlayerBody> mockBody = body == nullptr ? CreateNewUnique(MockBody, MockBody()) : body;
+			sharedPtr<PlayerBody> mockBody = body == nullptr ? CreateNewUnique(MockBody, MockBody(MusclesGroup({Muscle::Arm_L()}))) : body;
 			return sdfgh(mock, mockBody);
 		}
 		
@@ -68,10 +68,10 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->Received == nullptr);
 		}
 
-		TEST_METHOD(FeelOnMuscle)
+		TEST_METHOD(FeelOnRightMuscle)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
-			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody());
+			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({Muscle::Abdominal_R()})));
 			auto sut = sdfgh(mock, body);
 
 			sut.Execute(70);
@@ -79,5 +79,6 @@ namespace OWOGTAVTESTS
 
 			Assert::IsTrue(mock->DidFeel(Muscle::Abdominal_R()));
 		}
+
 	};
 }

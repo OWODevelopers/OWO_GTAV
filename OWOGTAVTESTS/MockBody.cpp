@@ -2,5 +2,5 @@
 
 OWOGame::MusclesGroup MockBody::LastHit()
 {
-    return OWOGame::MusclesGroup({ OWOGame::Muscle::Abdominal_R() });
+    return muscleGroup;
 }
