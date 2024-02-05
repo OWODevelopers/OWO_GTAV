@@ -39,5 +39,17 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->Received == nullptr);
 		}
 
+		TEST_METHOD(UpdateLastHealth)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			auto sut = sdfgh(mock);
+
+			sut.Execute(90);
+			sut.Execute(100);
+			sut.Execute(95);
+
+			Assert::IsTrue(mock->Received != nullptr);
+		}
+
 	};
 }
