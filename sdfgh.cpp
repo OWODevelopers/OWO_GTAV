@@ -4,5 +4,9 @@
 
 void sdfgh::Execute(int hp)
 {
-	owo->Send(OWOGame::SensationsFactory::Create());
+	if (hp < lastHealth)
+	{
+		owo->Send(OWOGame::SensationsFactory::Create());
+	}
+	lastHealth = hp;
 }

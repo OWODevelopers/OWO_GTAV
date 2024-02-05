@@ -18,7 +18,7 @@ namespace OWOGTAVTESTS
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(FeelDamage)
 		{
 			sharedPtr<HapticDevice> mock = CreateNewUnique(HapticDevice, HapticDevice());
 			auto sut = sdfgh(mock);
@@ -28,5 +28,17 @@ namespace OWOGTAVTESTS
 
 			Assert::IsTrue(mock->Received != nullptr);
 		}
+
+		TEST_METHOD(DontFeelHealing)
+		{
+			sharedPtr<HapticDevice> mock = CreateNewUnique(HapticDevice, HapticDevice());
+			auto sut = sdfgh(mock);
+
+			sut.Execute(100);
+			sut.Execute(200);
+
+			Assert::IsTrue(mock->Received == nullptr);
+		}
+
 	};
 }
