@@ -13,7 +13,7 @@ void FeelRecoil::Execute()
 
 	if (playerInventory->CurrentAmmo() < lastAmmo)
 	{
-		owo->Send(OWOGame::SensationsFactory::Create()->WithMuscles({OWOGame::Muscle::Abdominal_L()}));
+		owo->Send(playerInventory->RecoilSensation());
 	}
 
 	lastAmmo = playerInventory->CurrentAmmo();

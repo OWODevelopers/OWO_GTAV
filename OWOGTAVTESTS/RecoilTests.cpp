@@ -12,11 +12,18 @@ namespace OWOGTAVTESTS
 	{
 	public:		
 
+		FeelRecoil CreateSut(sharedPtr<MockDevice> device = nullptr, sharedPtr<MockInventory> inventory = nullptr) 
+		{
+			sharedPtr<MockDevice> mock = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
+			sharedPtr<MockInventory> mockInventory = inventory == nullptr ? CreateNewUnique(MockInventory, MockInventory()) : inventory;
+			return FeelRecoil(mock, mockInventory);
+		}
+
 		TEST_METHOD(FeelRecoil_WhenShooting)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
-			auto sut = FeelRecoil(mock, inventory);
+			auto sut = CreateSut(mock, inventory);
 
 			sut.Execute();
 			inventory->ammo--;
@@ -28,8 +35,7 @@ namespace OWOGTAVTESTS
 		TEST_METHOD(DontFeelRecoil_WhenNotShooting) 
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
-			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
-			auto sut = FeelRecoil(mock, inventory);
+			auto sut = CreateSut(mock);
 
 			sut.Execute();
 			sut.Execute();
@@ -41,7 +47,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
-			auto sut = FeelRecoil(mock, inventory);
+			auto sut = CreateSut(mock, inventory);
 
 			inventory->ammo = 10;
 			sut.Execute();
@@ -55,7 +61,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
-			auto sut = FeelRecoil(mock, inventory);
+			auto sut = CreateSut(mock, inventory);
 
 			inventory->currentWeapon = 0;
 			inventory->ammo = 10;
@@ -65,7 +71,20 @@ namespace OWOGTAVTESTS
 			sut.Execute();
 
 			Assert::IsFalse(mock->DidFeelAnything());
+		}
 
+		TEST_METHOD(ChangeSensation_BasedOn_Weapon) 
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
+			auto sut = CreateSut(mock, inventory);
+
+			inventory->toBeFelt = SensationsFactory::Create(10)->WithMuscles({ Muscle::Pectoral_R()});
+			sut.Execute();
+			inventory->ammo--;
+			sut.Execute();
+
+			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsFactory::Create(10)));
 		}
 	};
 }
