@@ -79,5 +79,16 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->DidFeel(Muscle::Abdominal_R().WithIntensity(20)));
 		}
 
+		TEST_METHOD(Feel_AtHigherIntensity_ThanLowest)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({ Muscle::Abdominal_R() })));
+			auto sut = sdfgh(mock, body);
+
+			sut.Execute(100);
+			sut.Execute(50);
+
+			Assert::IsFalse(mock->DidFeel(Muscle::Abdominal_R().WithIntensity(20)));
+		}
 	};
 }
