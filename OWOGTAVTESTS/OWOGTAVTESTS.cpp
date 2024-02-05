@@ -28,7 +28,7 @@ namespace OWOGTAVTESTS
 			sut.Execute(100);
 			sut.Execute(90);
 
-			Assert::IsTrue(mock->WhatFelt != nullptr);
+			Assert::IsTrue(mock->DidFeelAnything());
 		}
 
 		TEST_METHOD(DontFeelHealing)
@@ -39,7 +39,7 @@ namespace OWOGTAVTESTS
 			sut.Execute(100);
 			sut.Execute(200);
 
-			Assert::IsTrue(mock->WhatFelt == nullptr);
+			Assert::IsFalse(mock->DidFeelAnything());
 		}
 
 		TEST_METHOD(UpdateLastHealth)
@@ -51,7 +51,7 @@ namespace OWOGTAVTESTS
 			sut.Execute(100);
 			sut.Execute(95);
 
-			Assert::IsTrue(mock->WhatFelt != nullptr);
+			Assert::IsTrue(mock->DidFeelAnything());
 		}
 
 		TEST_METHOD(DontFeelNoDamage)
@@ -62,7 +62,7 @@ namespace OWOGTAVTESTS
 			sut.Execute(45);
 			sut.Execute(45);
 
-			Assert::IsTrue(mock->WhatFelt == nullptr);
+			Assert::IsFalse(mock->DidFeelAnything());
 		}
 
 		TEST_METHOD(FeelOnRightMuscle)
