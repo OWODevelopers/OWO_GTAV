@@ -8,8 +8,14 @@ private:
 	sharedPtr<OWOGame::OWO> owo = nullptr;
 	sharedPtr<PlayerInventory> playerInventory = nullptr;
 
-	int lastAmmo = 0;
-	int lastWeapon = 0;
+	int ammo = 0;
+	int equipedWeapon = 0;
+
+	void ResetEquipedWeapon();
+	void SendRecoilSensation();
+	bool DidShoot();
+	bool DidChangeWeapon();
+	void UpdateAmmo();
 public:
 	static const int Priority = 3;
 
