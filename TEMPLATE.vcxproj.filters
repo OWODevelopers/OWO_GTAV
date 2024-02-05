@@ -5,27 +5,27 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
     <ClCompile Include="ConsoleLogger.cpp" />
-    <ClCompile Include="sdfgh.cpp">
-      <Filter>asdfghhujr</Filter>
+    <ClCompile Include="FeelDamage.cpp">
+      <Filter>FeelDamage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="script.h" />
     <ClInclude Include="ConsoleLogger.h" />
-    <ClInclude Include="sdfgh.h">
-      <Filter>asdfghhujr</Filter>
+    <ClInclude Include="FeelDamage.h">
+      <Filter>FeelDamage</Filter>
     </ClInclude>
     <ClInclude Include="PlayerBody.h">
       <Filter>Abstractions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="asdfghhujr">
-      <UniqueIdentifier>{e8a18e62-edbd-41bd-bccb-91c49dfe781c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Abstractions">
       <UniqueIdentifier>{1d6a105a-9415-4003-b5dd-d2619567ae49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FeelDamage">
+      <UniqueIdentifier>{e8a18e62-edbd-41bd-bccb-91c49dfe781c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

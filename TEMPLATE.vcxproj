@@ -15,14 +15,14 @@
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
-    <ClCompile Include="sdfgh.cpp" />
+    <ClCompile Include="FeelDamage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="PlayerBody.h" />
     <ClInclude Include="script.h" />
-    <ClInclude Include="sdfgh.h" />
+    <ClInclude Include="FeelDamage.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="OWOAPI\OWOAPI.vcxproj">

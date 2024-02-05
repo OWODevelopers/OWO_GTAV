@@ -2,7 +2,7 @@
 #include "HapticDevice.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
 #include "MockBody.h"
-#include "../sdfgh.h"
+#include "../FeelDamage.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -15,17 +15,17 @@ namespace OWOGTAVTESTS
 	TEST_CLASS(OWOGTAVTESTS)
 	{
 	public:
-		sdfgh Createasdfasfads(sharedPtr<OWOGame::OWO> device = nullptr, sharedPtr<PlayerBody> body = nullptr) 
+		FeelDamage CreateSut(sharedPtr<OWOGame::OWO> device = nullptr, sharedPtr<PlayerBody> body = nullptr) 
 		{
 			sharedPtr<OWO> mock = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
 			sharedPtr<PlayerBody> mockBody = body == nullptr ? CreateNewUnique(MockBody, MockBody(MusclesGroup({Muscle::Arm_L()}))) : body;
-			return sdfgh(mock, mockBody);
+			return FeelDamage(mock, mockBody);
 		}
 		
-		TEST_METHOD(FeelDamage)
+		TEST_METHOD(FeelDamage_WhenHealthIs_BelowPreviousHealth)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
-			auto sut = Createasdfasfads(mock);
+			auto sut = CreateSut(mock);
 
 			sut.Execute(100);
 			sut.Execute(90);
@@ -36,7 +36,7 @@ namespace OWOGTAVTESTS
 		TEST_METHOD(DontFeelHealing)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
-			auto sut = Createasdfasfads(mock);
+			auto sut = CreateSut(mock);
 
 			sut.Execute(100);
 			sut.Execute(200);
@@ -47,7 +47,7 @@ namespace OWOGTAVTESTS
 		TEST_METHOD(UpdateLastHealth)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
-			auto sut = Createasdfasfads(mock);
+			auto sut = CreateSut(mock);
 
 			sut.Execute(90);
 			sut.Execute(100);
@@ -59,7 +59,7 @@ namespace OWOGTAVTESTS
 		TEST_METHOD(DontFeelNoDamage)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
-			auto sut = Createasdfasfads(mock);
+			auto sut = CreateSut(mock);
 
 			sut.Execute(45);
 			sut.Execute(45);
@@ -71,7 +71,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({Muscle::Abdominal_R()})));
-			auto sut = sdfgh(mock, body);
+			auto sut = FeelDamage(mock, body);
 
 			sut.Execute(100);
 			sut.Execute(99);
@@ -83,7 +83,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({ Muscle::Abdominal_R() })));
-			auto sut = sdfgh(mock, body);
+			auto sut = FeelDamage(mock, body);
 
 			sut.Execute(100);
 			sut.Execute(50);
