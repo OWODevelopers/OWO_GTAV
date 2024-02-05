@@ -1,52 +1,52 @@
 #include "HapticDevice.h"
 
-void HapticDevice::Configure(sharedPtr<GameAuth> auth)
+void MockDevice::Configure(sharedPtr<GameAuth> auth)
 {
 
 }
 
-void HapticDevice::Send(uniquePtr<OWOGame::Sensation> sensation)
+void MockDevice::Send(uniquePtr<OWOGame::Sensation> sensation)
 {
 	Received = movePtr(sensation);
 }
 
-void HapticDevice::Stop()
+void MockDevice::Stop()
 {
 }
 
-OWOGame::ConnectionState HapticDevice::UpdateStatus(uint64_t timeInMs)
-{
-	return OWOGame::ConnectionState::Connected;
-}
-
-OWOGame::ConnectionState HapticDevice::AutoConnect()
+OWOGame::ConnectionState MockDevice::UpdateStatus(uint64_t timeInMs)
 {
 	return OWOGame::ConnectionState::Connected;
 }
 
-OWOGame::ConnectionState HapticDevice::Connect(owoVector<owoString> ip)
+OWOGame::ConnectionState MockDevice::AutoConnect()
 {
 	return OWOGame::ConnectionState::Connected;
 }
 
-owoVector<owoString> HapticDevice::DiscoveredApps()
+OWOGame::ConnectionState MockDevice::Connect(owoVector<owoString> ip)
+{
+	return OWOGame::ConnectionState::Connected;
+}
+
+owoVector<owoString> MockDevice::DiscoveredApps()
 {
 	return owoVector<owoString>();
 }
 
-void HapticDevice::Scan(uint64_t timeInMs)
+void MockDevice::Scan(uint64_t timeInMs)
 {
 }
 
-void HapticDevice::Disconnect()
+void MockDevice::Disconnect()
 {
 }
 
-ConnectionState HapticDevice::State()
+ConnectionState MockDevice::State()
 {
 	return ConnectionState::Connected;
 }
 
-void HapticDevice::ChangeUpdateFrequency(uint64_t newFrequency)
+void MockDevice::ChangeUpdateFrequency(uint64_t newFrequency)
 {
 }

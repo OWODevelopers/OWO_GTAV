@@ -3,11 +3,11 @@
 
 using namespace OWOGame;
 
-class HapticDevice : public OWO 
+class MockDevice : public OWO 
 {
 public:
-    HapticDevice() : OWO(nullptr) {}
-    ~HapticDevice() {}
+    MockDevice() : OWO(nullptr) {}
+    ~MockDevice() {}
     uniquePtr <Sensation> Received;
 
     void Configure(sharedPtr<GameAuth> auth) override;

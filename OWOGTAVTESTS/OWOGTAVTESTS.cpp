@@ -5,7 +5,6 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-//1.Si la vida del personaje baja se envía sensación.
 //2.La barra de escudo y de vida se tratan como una sola.
 //3.La sensación se envía a unos músculos diferentes según punto de impacto.
 //4.La intensidad del músculo cambia según la vida restada
@@ -20,7 +19,7 @@ namespace OWOGTAVTESTS
 		
 		TEST_METHOD(FeelDamage)
 		{
-			sharedPtr<HapticDevice> mock = CreateNewUnique(HapticDevice, HapticDevice());
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			auto sut = sdfgh(mock);
 
 			sut.Execute(100);
@@ -31,7 +30,7 @@ namespace OWOGTAVTESTS
 
 		TEST_METHOD(DontFeelHealing)
 		{
-			sharedPtr<HapticDevice> mock = CreateNewUnique(HapticDevice, HapticDevice());
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			auto sut = sdfgh(mock);
 
 			sut.Execute(100);
