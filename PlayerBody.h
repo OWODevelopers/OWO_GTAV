@@ -7,4 +7,5 @@ public:
 	~PlayerBody() {};
 
 	virtual OWOGame::MusclesGroup LastHit() = 0;
+	virtual uniquePtr<OWOGame::Sensation>  DamageFelt() = 0;
 };

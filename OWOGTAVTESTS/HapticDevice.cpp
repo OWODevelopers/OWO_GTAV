@@ -7,9 +7,9 @@ void MockDevice::Configure(sharedPtr<GameAuth> auth)
 
 void MockDevice::Send(uniquePtr<OWOGame::Sensation> sensation)
 {
-	Received = movePtr(sensation);
-	auto a = dynamic_cast<SensationWithMuscles*>(Received.get());
-	LastFelt = a->muscles;
+	WhatFelt = movePtr(sensation);
+	auto a = dynamic_cast<SensationWithMuscles*>(WhatFelt.get());
+	WhereFelt = a->muscles;
 }
 
 void MockDevice::Stop()
@@ -53,13 +53,18 @@ void MockDevice::ChangeUpdateFrequency(uint64_t newFrequency)
 {
 }
 
-bool MockDevice::DidFeel(Muscle muscle)
+bool MockDevice::DidFeelIn(Muscle muscle)
 {
-	for (Muscle x : (owoVector<Muscle>)LastFelt)
+	for (Muscle x : (owoVector<Muscle>)WhereFelt)
 	{
 		if (x.ToString() == muscle.ToString()) 
 			return true;
 	}
 
 	return false;
+}
+
+bool MockDevice::DidFeelWithoutMuscles(uniquePtr<Sensation> sensation)
+{
+	return dynamic_cast<SensationWithMuscles*>(WhatFelt.get())->reference->ToString() == sensation->ToString();
 }

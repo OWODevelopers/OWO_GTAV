@@ -6,8 +6,6 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-//4.La intensidad del músculo cambia según la vida restada
-//5.Actualizar la vida máxima si la vida actual (o escudo) sube en lugar de bajar.
 //6.Cambiar la sensación a enviar dependiendo del tipo de daño.
 
 namespace OWOGTAVTESTS
@@ -30,7 +28,7 @@ namespace OWOGTAVTESTS
 			sut.Execute(100);
 			sut.Execute(90);
 
-			Assert::IsTrue(mock->Received != nullptr);
+			Assert::IsTrue(mock->WhatFelt != nullptr);
 		}
 
 		TEST_METHOD(DontFeelHealing)
@@ -41,7 +39,7 @@ namespace OWOGTAVTESTS
 			sut.Execute(100);
 			sut.Execute(200);
 
-			Assert::IsTrue(mock->Received == nullptr);
+			Assert::IsTrue(mock->WhatFelt == nullptr);
 		}
 
 		TEST_METHOD(UpdateLastHealth)
@@ -53,7 +51,7 @@ namespace OWOGTAVTESTS
 			sut.Execute(100);
 			sut.Execute(95);
 
-			Assert::IsTrue(mock->Received != nullptr);
+			Assert::IsTrue(mock->WhatFelt != nullptr);
 		}
 
 		TEST_METHOD(DontFeelNoDamage)
@@ -64,31 +62,44 @@ namespace OWOGTAVTESTS
 			sut.Execute(45);
 			sut.Execute(45);
 
-			Assert::IsTrue(mock->Received == nullptr);
+			Assert::IsTrue(mock->WhatFelt == nullptr);
 		}
 
 		TEST_METHOD(FeelOnRightMuscle)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({Muscle::Abdominal_R()})));
-			auto sut = FeelDamage(mock, body);
+			auto sut = CreateSut(mock, body);
 
 			sut.Execute(100);
 			sut.Execute(99);
 
-			Assert::IsTrue(mock->DidFeel(Muscle::Abdominal_R().WithIntensity(20)));
+			Assert::IsTrue(mock->DidFeelIn(Muscle::Abdominal_R().WithIntensity(20)));
 		}
 
 		TEST_METHOD(Feel_AtHigherIntensity_ThanLowest)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({ Muscle::Abdominal_R() })));
-			auto sut = FeelDamage(mock, body);
+			auto sut = CreateSut(mock, body);
 
 			sut.Execute(100);
 			sut.Execute(50);
 
-			Assert::IsFalse(mock->DidFeel(Muscle::Abdominal_R().WithIntensity(20)));
+			Assert::IsFalse(mock->DidFeelIn(Muscle::Abdominal_R().WithIntensity(20)));
+		}
+
+		TEST_METHOD(Feel_Based_On_damageType)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({ Muscle::Abdominal_R() })));
+			auto sut = CreateSut(mock, body);
+			body->damageSensation = SensationsFactory::Create(20);
+
+			sut.Execute(100);
+			sut.Execute(50);
+
+			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsFactory::Create(20)));
 		}
 	};
 }

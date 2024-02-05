@@ -8,8 +8,8 @@ class MockDevice : public OWO
 public:
     MockDevice() : OWO(nullptr) {}
     ~MockDevice() {}
-    uniquePtr <Sensation> Received;
-    MusclesGroup LastFelt = MusclesGroup({});
+    uniquePtr <Sensation> WhatFelt;
+    MusclesGroup WhereFelt = MusclesGroup({});
 
     void Configure(sharedPtr<GameAuth> auth) override;
     void Send(uniquePtr<OWOGame::Sensation> sensation) override;
@@ -24,5 +24,6 @@ public:
 
     void ChangeUpdateFrequency(uint64_t newFrequency) override;
 
-    bool DidFeel(Muscle muscle);
+    bool DidFeelIn(Muscle muscle);
+    bool DidFeelWithoutMuscles(uniquePtr<Sensation> sensation);
 };
