@@ -24,5 +24,17 @@ namespace OWOGTAVTESTS
 
 			Assert::IsTrue(mock->DidFeelAnything());
 		}
+
+		TEST_METHOD(DontFeelRecoil_WhenNotShooting) 
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
+			auto sut = FeelRecoil(mock, inventory);
+
+			sut.Execute();
+			sut.Execute();
+
+			Assert::IsFalse(mock->DidFeelAnything());
+		}
 	};
 }
