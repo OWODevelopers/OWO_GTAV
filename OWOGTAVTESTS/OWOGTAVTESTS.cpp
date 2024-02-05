@@ -6,7 +6,6 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-//3.La sensación se envía a unos músculos diferentes según punto de impacto.
 //4.La intensidad del músculo cambia según la vida restada
 //5.Actualizar la vida máxima si la vida actual (o escudo) sube en lugar de bajar.
 //6.Cambiar la sensación a enviar dependiendo del tipo de daño.
@@ -74,10 +73,10 @@ namespace OWOGTAVTESTS
 			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({Muscle::Abdominal_R()})));
 			auto sut = sdfgh(mock, body);
 
-			sut.Execute(70);
-			sut.Execute(20);
+			sut.Execute(100);
+			sut.Execute(99);
 
-			Assert::IsTrue(mock->DidFeel(Muscle::Abdominal_R()));
+			Assert::IsTrue(mock->DidFeel(Muscle::Abdominal_R().WithIntensity(20)));
 		}
 
 	};
