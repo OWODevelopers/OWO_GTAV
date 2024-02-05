@@ -22,12 +22,6 @@
     <ClInclude Include="PlayerBody.h">
       <Filter>Abstractions</Filter>
     </ClInclude>
-    <ClInclude Include="FeelRecoil.h">
-      <Filter>FeelRecoil</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerInventory.h">
-      <Filter>Abstractions</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Abstractions">
