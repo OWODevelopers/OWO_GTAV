@@ -26,18 +26,18 @@ namespace OWOGame {
         OWO(Client* client);
         ~OWO();
 
-        void Configure(sharedPtr<GameAuth> auth);
-        void Send(uniquePtr<OWOGame::Sensation> sensation);
-        void Stop();
-        OWOGame::ConnectionState UpdateStatus(uint64_t timeInMs);
-        OWOGame::ConnectionState AutoConnect();
-        OWOGame::ConnectionState Connect(owoVector<owoString> ip);
-        owoVector<owoString> DiscoveredApps();
-        void Scan(uint64_t timeInMs);
-        void Disconnect();
-        ConnectionState State();
+        virtual void Configure(sharedPtr<GameAuth> auth);
+        virtual void Send(uniquePtr<OWOGame::Sensation> sensation);
+        virtual void Stop();
+        virtual OWOGame::ConnectionState UpdateStatus(uint64_t timeInMs);
+        virtual OWOGame::ConnectionState AutoConnect();
+        virtual OWOGame::ConnectionState Connect(owoVector<owoString> ip);
+        virtual owoVector<owoString> DiscoveredApps();
+        virtual void Scan(uint64_t timeInMs);
+        virtual void Disconnect();
+        virtual ConnectionState State();
 
-        void ChangeUpdateFrequency(uint64_t newFrequency);
+        virtual void ChangeUpdateFrequency(uint64_t newFrequency);
 
         template<typename T = Network> static uniquePtr<OWO> Create()
         {
