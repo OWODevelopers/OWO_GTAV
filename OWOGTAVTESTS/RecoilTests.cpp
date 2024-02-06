@@ -17,7 +17,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mockDevice = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
 			sharedPtr<MockInventory> mockInventory = inventory == nullptr ? CreateNewUnique(MockInventory, MockInventory()) : inventory;
-			SensationOfWeapons gwregv = sensations == nullptr ? SensationOfWeapons({ 0 }, SensationsFactory::Create()->WithMuscles({Muscle::Pectoral_L()})->ToString()) : *sensations;
+			SensationOfWeapons gwregv = sensations == nullptr ? SensationOfWeapons({ 0 }, SensationsFactory::Create()->ToString()) : *sensations;
 
 			return FeelRecoil(mockDevice, mockInventory, gwregv);
 		}
@@ -80,7 +80,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
-			auto sut = CreateSut(mock, inventory, CreateNewUnique(SensationOfWeapons, SensationOfWeapons({ 20 }, SensationsFactory::Create(10)->WithMuscles({Muscle::Pectoral_L()})->ToString())));
+			auto sut = CreateSut(mock, inventory, CreateNewUnique(SensationOfWeapons, SensationOfWeapons({ 20 }, SensationsFactory::Create(10)->ToString())));
 
 			inventory->currentWeapon = 20;
 			sut.Execute();

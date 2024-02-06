@@ -8,7 +8,8 @@ void MockDevice::Configure(sharedPtr<GameAuth> auth)
 void MockDevice::Send(uniquePtr<OWOGame::Sensation> sensation)
 {
 	WhatFelt = movePtr(sensation);
-	WhereFelt = dynamic_cast<SensationWithMuscles*>(WhatFelt.get())->muscles;
+	if(WhatFelt->ToString().find('|') != -1)
+		WhereFelt = dynamic_cast<SensationWithMuscles*>(WhatFelt.get())->muscles;
 }
 
 void MockDevice::Stop()
@@ -65,7 +66,10 @@ bool MockDevice::DidFeelIn(Muscle aMuscle)
 
 bool MockDevice::DidFeelWithoutMuscles(uniquePtr<Sensation> sensation)
 {
-	return dynamic_cast<SensationWithMuscles*>(WhatFelt.get())->reference->ToString() == sensation->ToString();
+	if (WhatFelt->ToString().find('|') != -1)
+		return dynamic_cast<SensationWithMuscles*>(WhatFelt.get())->reference->ToString() == sensation->ToString();
+
+	return WhatFelt->ToString() == sensation->ToString();
 }
 
 bool MockDevice::DidFeelAnything()
