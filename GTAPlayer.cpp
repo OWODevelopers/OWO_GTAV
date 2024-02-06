@@ -1,4 +1,5 @@
 #include "GTAPlayer.h"
+#include "../OWOAPI/Domain/SensationsParser.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
 #include <natives.h>
 #include <types.h>
@@ -57,17 +58,17 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
             }
         }
 
-        return SensationsFactory::Create(10, .2f, 20);
+        return SensationsParser::Parse("5");
     }
 
     if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player()))
-        return SensationsFactory::Create();
+        return SensationsParser::Parse("5");
 
     if (PED::IS_PED_RAGDOLL(Player()))
-        return SensationsFactory::Create();
+        return SensationsParser::Parse("3");
 
     if (ENTITY::IS_ENTITY_IN_WATER(Player()))
-        return SensationsFactory::Create();
+        return SensationsParser::Parse("4");
 
-    return SensationsFactory::Create(10, .2f, 20);
+    return SensationsParser::Parse("5");
 }

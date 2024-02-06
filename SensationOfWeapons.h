@@ -2,7 +2,7 @@
 #include <vector>
 #include <types.h>
 #include "../OWOAPI/Domain/Sensation.h"
-#include "../OWOAPI/Domain/SensationsFactory.h"
+#include "../OWOAPI/Domain/SensationsParser.h"
 
 class SensationOfWeapons
 {
@@ -51,7 +51,7 @@ public:
 		2484171525,
 		3441901897,
 		419712736,
-		940833800 }, OWOGame::SensationsFactory::Create());
+		940833800 }, OWOGame::SensationsParser::Parse("0"));
 	}
 
 	static SensationOfWeapons Bullet()
@@ -132,7 +132,7 @@ public:
     3347935668,
     350597077,
     485882440,
-    1924557585 }, OWOGame::SensationsFactory::Create());
+    1924557585 }, OWOGame::SensationsParser::Parse("1"));
 	}
 
 	static SensationOfWeapons Explosive()
@@ -164,6 +164,6 @@ public:
     84788907,
     125959754,
     3125143736,
-    3676729658 }, OWOGame::SensationsFactory::Create());
+    3676729658 }, OWOGame::SensationsParser::Parse("2"));
 	}
 };
