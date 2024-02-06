@@ -1,4 +1,4 @@
-#include "kjhsfdgkis.h"
+#include "SensationOfWeapons.h"
 
 bool SensationOfWeapons::HasSensationFor(Hash aWeapon)
 {

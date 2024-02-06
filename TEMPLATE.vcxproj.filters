@@ -9,7 +9,7 @@
       <Filter>FeelDamage</Filter>
     </ClCompile>
     <ClCompile Include="GTAPlayer.cpp" />
-    <ClCompile Include="kjhsfdgkis.cpp" />
+    <ClCompile Include="SensationOfWeapons.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="keyboard.h" />
@@ -22,7 +22,7 @@
       <Filter>Abstractions</Filter>
     </ClInclude>
     <ClInclude Include="GTAPlayer.h" />
-    <ClInclude Include="kjhsfdgkis.h" />
+    <ClInclude Include="SensationOfWeapons.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Abstractions">
