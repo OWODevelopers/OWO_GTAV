@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleLogger.cpp" />
+    <ClCompile Include="Debug.cpp" />
     <ClCompile Include="GTAPlayer.cpp" />
     <ClCompile Include="FeelRecoil.cpp" />
     <ClCompile Include="keyboard.cpp" />
@@ -22,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="GTAPlayer.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="SensationOfWeapons.h" />

@@ -3,7 +3,7 @@
 #include "../OWOAPI/Domain/SensationsFactory.h"
 #include <natives.h>
 #include <types.h>
-
+#include "Debug.h"
 
 using namespace OWOGame;
 
@@ -36,19 +36,47 @@ MusclesGroup GetMusclesFrom(Hash bones)
         return MusclesGroup::All();
     }
 }
+MusclesGroup GetSideFrom(Hash bone) 
+{
+    switch (bone)
+    {
+    case 24817:
+    case 40269:
+    case 45509:
+    case 24816:
+    case 57597:
+        return MusclesGroup::Front();
+    case 10706:
+        return MusclesGroup({ Muscle::Arm_R(), Muscle::Abdominal_R(), Muscle::Lumbar_R(), Muscle::Pectoral_R() });
+    case 64729:
+        return MusclesGroup({ Muscle::Arm_L(), Muscle::Abdominal_L(), Muscle::Lumbar_L(), Muscle::Pectoral_L() });
+    case 24818:
+        return MusclesGroup::Back();
+    default:
+        return MusclesGroup::All();
+    }
+}
 
 MusclesGroup GTAPlayer::LastHit()
 {
     Hash bone = 0;
     PED::GET_PED_LAST_DAMAGE_BONE(PLAYER::PLAYER_PED_ID(), &bone);
 
-    return GetMusclesFrom(bone);
+    switch (precision) {
+    case Single:
+        return GetMusclesFrom(bone);
+    case Side:
+        return GetMusclesFrom(bone);
+    case General:
+        return MusclesGroup::All();
+    }
 }
 
 uniquePtr<Sensation> GTAPlayer::DamageFelt()
 {
     if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), 0, 2)) 
     {
+        precision = Single;
         for (int i = 0; i < weapons.size(); i++)
         {
             for (auto weapon : weapons[i].weapons)
@@ -61,11 +89,18 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
         return SensationsParser::Parse("5");
     }
 
-    if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player()))
-        return SensationsParser::Parse("5");
+    if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player())) 
+    {
+        Debug::Log("Vehicle");
+        precision = Side;
+        return SensationsParser::Parse("6");
+    }
 
-    if (PED::IS_PED_RAGDOLL(Player()))
+    if (PED::IS_PED_RAGDOLL(Player())) 
+    {
+        precision = Side;
         return SensationsParser::Parse("3");
+    }
 
     if (ENTITY::IS_ENTITY_IN_WATER(Player()))
         return SensationsParser::Parse("4");
