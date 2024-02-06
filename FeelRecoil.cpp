@@ -35,7 +35,7 @@ uniquePtr<OWOGame::Sensation> FeelRecoil::SensationOf(int weapon)
 	if (sensations.ContainsWeapon(weapon))
 		return sensations.ToBeFelt();
 
-	return OWOGame::SensationsFactory::Create()->WithMuscles({ OWOGame::Muscle::Pectoral_L() });
+	return OWOGame::SensationsParser::Parse("5");
 }
 
 void FeelRecoil::Execute()

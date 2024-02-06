@@ -102,5 +102,19 @@ namespace OWOGTAVTESTS
 
 			Assert::AreEqual(FeelRecoil::Priority, mock->WhatFelt->GetPriority());
 		}
+
+		TEST_METHOD(Send_NotImplemented_Sensation)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
+			auto sut = CreateSut(mock, inventory);
+
+			inventory->currentWeapon = 1234;
+			sut.Execute();
+			inventory->ammo--;
+			sut.Execute();
+
+			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsParser::Parse("5")));
+		}
 	};
 }
