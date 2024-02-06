@@ -3,6 +3,7 @@
 #include "../OWOAPI/Domain/SensationsFactory.h"
 #include "MockInventory.h"
 #include "../FeelRecoil.h"
+#include "../SensationOfWeapons.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,11 +13,13 @@ namespace OWOGTAVTESTS
 	{
 	public:		
 
-		FeelRecoil CreateSut(sharedPtr<MockDevice> device = nullptr, sharedPtr<MockInventory> inventory = nullptr) 
+		FeelRecoil CreateSut(sharedPtr<MockDevice> device = nullptr, sharedPtr<MockInventory> inventory = nullptr, sharedPtr<SensationOfWeapons> sensations = nullptr)
 		{
-			sharedPtr<MockDevice> mock = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
+			sharedPtr<MockDevice> mockDevice = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
 			sharedPtr<MockInventory> mockInventory = inventory == nullptr ? CreateNewUnique(MockInventory, MockInventory()) : inventory;
-			return FeelRecoil(mock, mockInventory);
+			SensationOfWeapons gwregv = sensations == nullptr ? SensationOfWeapons({ 0 }, SensationsFactory::Create()->WithMuscles({Muscle::Pectoral_L()})->ToString()) : *sensations;
+
+			return FeelRecoil(mockDevice, mockInventory, gwregv);
 		}
 
 		TEST_METHOD(FeelRecoil_WhenShooting)

@@ -1,17 +1,18 @@
 #pragma once
 #include <vector>
-#include <types.h>
 #include "../OWOAPI/Domain/Sensation.h"
 #include "../OWOAPI/Domain/SensationsParser.h"
 
 class SensationOfWeapons
 {
 public:
-	std::vector<Hash> weapons = { };
+	std::vector<unsigned long> weapons = { };
     std::string toBeFelt;
 
-	SensationOfWeapons(std::vector<Hash> weapons, std::string sensation)
-		: weapons(weapons), toBeFelt(sensation) {}
+	SensationOfWeapons(std::vector<unsigned long> weapons, std::string sensation) : weapons(weapons), toBeFelt(sensation) {}
+
+    bool ContainsWeapon(int which);
+    uniquePtr<OWOGame::Sensation> ToBeFelt();
 
 	static SensationOfWeapons Melee()
 	{
@@ -53,7 +54,6 @@ public:
 		419712736,
 		940833800 }, "0");
 	}
-
 	static SensationOfWeapons Bullet()
 	{
 		return SensationOfWeapons({ 453432689,
@@ -134,7 +134,6 @@ public:
     485882440,
     1924557585 }, "1");
 	}
-
 	static SensationOfWeapons Explosive()
 	{
 		return SensationOfWeapons({ 856002082,

@@ -18,6 +18,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
     <ClCompile Include="FeelDamage.cpp" />
+    <ClCompile Include="SensationOfWeapons.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
@@ -71,8 +72,7 @@
     <TargetExt>.asi</TargetExt>
     <OutDir>$(LOCALAPPDATA)\FiveM\FiveM.app\plugins</OutDir>
     <IntDir>tmp\$(Configuration)\</IntDir>
-    <PublicIncludeDirectories>
-    </PublicIncludeDirectories>
+    <PublicIncludeDirectories>$(AdditionalIncludeDirectories);$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugTest|x64'">
     <LinkIncremental>false</LinkIncremental>

@@ -8,6 +8,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
     <ClCompile Include="FeelDamage.cpp" />
+    <ClCompile Include="SensationOfWeapons.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />

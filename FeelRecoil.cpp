@@ -10,7 +10,7 @@ void FeelRecoil::ResetEquipedWeapon()
 
 void FeelRecoil::SendRecoilSensation()
 {
-	auto sensation = OWOGame::SensationsFactory::Create()->WithMuscles({OWOGame::Muscle::Pectoral_L()});
+	auto sensation = SensationOf(equipedWeapon);
 	sensation->SetPriority(FeelRecoil::Priority);
 	owo->Send(movePtr(sensation));
 }
@@ -28,6 +28,14 @@ bool FeelRecoil::DidChangeWeapon()
 void FeelRecoil::UpdateAmmo()
 {
 	ammo = playerInventory->CurrentAmmo();
+}
+
+uniquePtr<OWOGame::Sensation> FeelRecoil::SensationOf(int weapon)
+{
+	if (sensations.ContainsWeapon(weapon))
+		return sensations.ToBeFelt();
+
+	return OWOGame::SensationsFactory::Create()->WithMuscles({ OWOGame::Muscle::Pectoral_L() });
 }
 
 void FeelRecoil::Execute()
