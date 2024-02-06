@@ -18,7 +18,7 @@ private:
 	bool DidShoot();
 	bool DidChangeWeapon();
 	void UpdateAmmo();
-	uniquePtr<OWOGame::Sensation> SensationOf(int weapon);
+	uniquePtr<OWOGame::Sensation> RecoilSensation();
 public:
 	static const int Priority = 3;
 
