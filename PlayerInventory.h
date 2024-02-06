@@ -5,5 +5,4 @@ class PlayerInventory {
 public:
 	virtual int CurrentAmmo() = 0;
 	virtual int CurrentWeapon() = 0;
-	virtual uniquePtr<OWOGame::Sensation> RecoilSensation() = 0;
 };

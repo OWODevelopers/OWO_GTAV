@@ -10,6 +10,4 @@ public:
 
 	int CurrentAmmo() override;
 	int CurrentWeapon() override;
-
-	uniquePtr<OWOGame::Sensation> RecoilSensation() override;
 };

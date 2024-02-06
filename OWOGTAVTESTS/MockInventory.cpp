@@ -9,8 +9,3 @@ int MockInventory::CurrentWeapon()
 {
 	return currentWeapon;
 }
-
-uniquePtr<OWOGame::Sensation> MockInventory::RecoilSensation()
-{
-	return movePtr(toBeFelt->Clone());
-}
