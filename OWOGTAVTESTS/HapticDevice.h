@@ -5,6 +5,8 @@ using namespace OWOGame;
 
 class MockDevice : public OWO 
 {
+private:
+    bool HasMuscles();
 public:
     MockDevice() : OWO(nullptr) {}
     ~MockDevice() {}

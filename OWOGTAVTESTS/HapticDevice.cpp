@@ -1,5 +1,10 @@
 #include "HapticDevice.h"
 
+bool MockDevice::HasMuscles()
+{
+	return WhatFelt->ToString().find('|') != -1;
+}
+
 void MockDevice::Configure(sharedPtr<GameAuth> auth)
 {
 
@@ -8,7 +13,7 @@ void MockDevice::Configure(sharedPtr<GameAuth> auth)
 void MockDevice::Send(uniquePtr<OWOGame::Sensation> sensation)
 {
 	WhatFelt = movePtr(sensation);
-	if(WhatFelt->ToString().find('|') != -1)
+	if(HasMuscles())
 		WhereFelt = dynamic_cast<SensationWithMuscles*>(WhatFelt.get())->muscles;
 }
 
@@ -66,7 +71,7 @@ bool MockDevice::DidFeelIn(Muscle aMuscle)
 
 bool MockDevice::DidFeelWithoutMuscles(uniquePtr<Sensation> sensation)
 {
-	if (WhatFelt->ToString().find('|') != -1)
+	if (HasMuscles())
 		return dynamic_cast<SensationWithMuscles*>(WhatFelt.get())->reference->ToString() == sensation->ToString();
 
 	return WhatFelt->ToString() == sensation->ToString();
