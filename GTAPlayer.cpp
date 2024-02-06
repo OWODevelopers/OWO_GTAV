@@ -3,7 +3,7 @@
 #include "../OWOAPI/Domain/SensationsFactory.h"
 #include <natives.h>
 #include <types.h>
-
+#include "Debug.h"
 
 using namespace OWOGame;
 
@@ -91,6 +91,7 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
 
     if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player())) 
     {
+        Debug::Log("Vehicle");
         precision = Side;
         return SensationsParser::Parse("6");
     }
