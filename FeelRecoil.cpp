@@ -32,8 +32,11 @@ void FeelRecoil::UpdateAmmo()
 
 uniquePtr<OWOGame::Sensation> FeelRecoil::SensationOf(int weapon)
 {
-	if (sensations.ContainsWeapon(weapon))
-		return sensations.ToBeFelt();
+	for (auto sensation : sensations)
+	{
+		if (sensation.ContainsWeapon(weapon))
+			return sensation.ToBeFelt();
+	} 
 
 	return OWOGame::SensationsParser::Parse("5");
 }

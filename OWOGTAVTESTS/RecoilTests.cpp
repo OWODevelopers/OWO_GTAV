@@ -13,11 +13,11 @@ namespace OWOGTAVTESTS
 	{
 	public:		
 
-		FeelRecoil CreateSut(sharedPtr<MockDevice> device = nullptr, sharedPtr<MockInventory> inventory = nullptr, sharedPtr<SensationOfWeapons> sensations = nullptr)
+		FeelRecoil CreateSut(sharedPtr<MockDevice> device = nullptr, sharedPtr<MockInventory> inventory = nullptr, std::vector<SensationOfWeapons> sensations = {})
 		{
 			sharedPtr<MockDevice> mockDevice = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
 			sharedPtr<MockInventory> mockInventory = inventory == nullptr ? CreateNewUnique(MockInventory, MockInventory()) : inventory;
-			SensationOfWeapons gwregv = sensations == nullptr ? SensationOfWeapons({ 0 }, SensationsFactory::Create()->ToString()) : *sensations;
+			std::vector<SensationOfWeapons> gwregv = sensations.size() == 0 ? std::vector<SensationOfWeapons>{SensationOfWeapons({ 0 }, SensationsFactory::Create()->ToString())} : sensations;
 
 			return FeelRecoil(mockDevice, mockInventory, gwregv);
 		}
@@ -80,7 +80,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
-			auto sut = CreateSut(mock, inventory, CreateNewUnique(SensationOfWeapons, SensationOfWeapons({ 20 }, SensationsFactory::Create(10)->ToString())));
+			auto sut = CreateSut(mock, inventory, { SensationOfWeapons({ 20 }, SensationsFactory::Create(10)->ToString())});
 
 			inventory->currentWeapon = 20;
 			sut.Execute();
@@ -115,6 +115,20 @@ namespace OWOGTAVTESTS
 			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsParser::Parse("5")));
+		}
+
+		TEST_METHOD(Feel_DifferentRecoil)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
+			auto sut = CreateSut(mock, inventory, { SensationOfWeapons({ 0 }, ""), SensationOfWeapons({10}, SensationsFactory::Create(33)->ToString())});
+
+			inventory->currentWeapon = 10;
+			sut.Execute();
+			inventory->ammo--;
+			sut.Execute();
+
+			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsFactory::Create(33)));
 		}
 	};
 }
