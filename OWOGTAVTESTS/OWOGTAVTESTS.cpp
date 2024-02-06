@@ -6,8 +6,6 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-//6.Cambiar la sensación a enviar dependiendo del tipo de daño.
-
 namespace OWOGTAVTESTS
 {
 	TEST_CLASS(OWOGTAVTESTS)
