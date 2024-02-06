@@ -38,7 +38,7 @@
     <ProjectGuid>{8D82F34A-1D64-465B-84B1-37F89AD3D20B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>NativeTrainer</RootNamespace>
-    <ProjectName>OWOGTAMOD</ProjectName>
+    <ProjectName>OWOGTAVMOD</ProjectName>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -71,7 +71,8 @@
     <TargetExt>.asi</TargetExt>
     <OutDir>$(LOCALAPPDATA)\FiveM\FiveM.app\plugins</OutDir>
     <IntDir>tmp\$(Configuration)\</IntDir>
-    <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <PublicIncludeDirectories>
+    </PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugTest|x64'">
     <LinkIncremental>false</LinkIncremental>

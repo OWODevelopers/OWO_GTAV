@@ -7,6 +7,7 @@
 
 int main() {
 
+
 	CConsoleLoggerEx logger = CConsoleLoggerEx();
 	logger.Create("Logger");
 	sharedPtr<OWOGame::OWO> instance = OWOGame::OWO::Create<OWOGame::UDPNetwork>();
@@ -15,19 +16,19 @@ int main() {
 	auto player = std::shared_ptr<GTAPlayer>(new GTAPlayer({ SensationOfWeapons::Melee(), SensationOfWeapons::Bullet(), SensationOfWeapons::Explosive() }));
 	auto feelDamage = FeelDamage(instance, player);
 
-	int playerPed = PLAYER::PLAYER_PED_ID();
 	while (true)
 	{
 		if (IsKeyDown(VK_F3)) 
 		{
+			logger.cprintf("Connecting...");
 			instance->AutoConnect();
 		}
-		if (instance->State() != OWOGame::ConnectionState::Connected) {
-			WAIT(0);
-			continue;
-		}
 
-		feelDamage.Execute(ENTITY::GET_ENTITY_HEALTH(playerPed) + PED::GET_PED_ARMOUR(playerPed));
+		if (instance->State() == OWOGame::ConnectionState::Connected) 
+		{
+			int playerPed = PLAYER::PLAYER_PED_ID();
+			feelDamage.Execute(ENTITY::GET_ENTITY_HEALTH(playerPed) + PED::GET_PED_ARMOUR(playerPed));
+		}
 
 		instance->UpdateStatus(GetTickCount64());
 
