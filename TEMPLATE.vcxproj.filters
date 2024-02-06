@@ -1,41 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="ConsoleLogger.cpp" />
+    <ClCompile Include="GTAPlayer.cpp" />
+    <ClCompile Include="FeelRecoil.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
-    <ClCompile Include="ConsoleLogger.cpp" />
-    <ClCompile Include="FeelDamage.cpp">
-      <Filter>FeelDamage</Filter>
-    </ClCompile>
-    <ClCompile Include="FeelRecoil.cpp">
-      <Filter>FeelRecoil</Filter>
-    </ClCompile>
-    <ClCompile Include="GTAPlayer.cpp" />
-    <ClCompile Include="SensationOfWeapons.cpp" />
+    <ClCompile Include="FeelDamage.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="keyboard.h" />
-    <ClInclude Include="script.h" />
     <ClInclude Include="ConsoleLogger.h" />
-    <ClInclude Include="FeelDamage.h">
-      <Filter>FeelDamage</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerBody.h">
-      <Filter>Abstractions</Filter>
-    </ClInclude>
     <ClInclude Include="GTAPlayer.h" />
+    <ClInclude Include="keyboard.h" />
     <ClInclude Include="SensationOfWeapons.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Abstractions">
-      <UniqueIdentifier>{1d6a105a-9415-4003-b5dd-d2619567ae49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FeelDamage">
-      <UniqueIdentifier>{e8a18e62-edbd-41bd-bccb-91c49dfe781c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FeelRecoil">
-      <UniqueIdentifier>{8a09f55a-d19f-4835-9fc6-64522ebbdc1d}</UniqueIdentifier>
-    </Filter>
+    <ClInclude Include="PlayerBody.h" />
+    <ClInclude Include="PlayerInventory.h" />
+    <ClInclude Include="script.h" />
+    <ClInclude Include="FeelDamage.h" />
   </ItemGroup>
 </Project>

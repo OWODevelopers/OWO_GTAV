@@ -15,7 +15,6 @@
     <ClCompile Include="GTAPlayer.cpp" />
     <ClCompile Include="FeelRecoil.cpp" />
     <ClCompile Include="keyboard.cpp" />
-    <ClCompile Include="SensationOfWeapons.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
     <ClCompile Include="FeelDamage.cpp" />

@@ -2,7 +2,7 @@
 #include "../PlayerBody.h"
 #include <vector>
 #include <types.h>
-#include "../kjhsfdgkis.h"
+#include "../SensationOfWeapons.h"
 
 class GTAPlayer : public PlayerBody
 {
