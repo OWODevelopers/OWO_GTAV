@@ -11,6 +11,11 @@
 
 using namespace OWOGame;
 
+const Ped& GTAPlayer::Player()
+{
+    return PLAYER::PLAYER_PED_ID();
+}
+
 MusclesGroup GetMusclesFrom(Hash bones) 
 {
     switch (bones)
@@ -46,8 +51,8 @@ MusclesGroup GTAPlayer::LastHit()
 
 uniquePtr<Sensation> GTAPlayer::DamageFelt()
 {
-
-    if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), 0, 2)) {
+    if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), 0, 2)) 
+    {
         for (int i = 0; i < weapons.size(); i++)
         {
             for (auto weapon : weapons[i].weapons)
@@ -56,7 +61,17 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
                     return weapons[i].toBeFelt->Clone();
             }
         }
+
+        return SensationsFactory::Create(10, .2f, 20);
     }
 
-    
+    if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player()))
+        return SensationsFactory::Create();
+
+    //Caida
+
+    if(ENTITY::IS_ENTITY_IN_WATER(Player()))
+        return SensationsFactory::Create();
+
+    return SensationsFactory::Create(10, .2f, 20);
 }

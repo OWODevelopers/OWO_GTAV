@@ -14,4 +14,5 @@ public:
 
 	virtual OWOGame::MusclesGroup LastHit() override;
 	virtual uniquePtr<OWOGame::Sensation> DamageFelt() override;
+	const Ped& Player();
 };
