@@ -80,10 +80,10 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
-			auto sut = CreateSut(mock, inventory);
+			auto sut = CreateSut(mock, inventory, CreateNewUnique(SensationOfWeapons, SensationOfWeapons({ 20 }, SensationsFactory::Create(10)->WithMuscles({Muscle::Pectoral_L()})->ToString())));
 
+			inventory->currentWeapon = 20;
 			sut.Execute();
-			inventory->toBeFelt = SensationsFactory::Create(10)->WithMuscles({ Muscle::Pectoral_R()});
 			inventory->ammo--;
 			sut.Execute();
 
