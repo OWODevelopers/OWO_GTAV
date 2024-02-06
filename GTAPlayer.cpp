@@ -3,11 +3,6 @@
 #include <natives.h>
 #include <types.h>
 
-//1. Sentir daño por arma
-//2. Sentir daño por vehículo
-//3. Sentir daño por caída
-//4. Sentir por ahogamiento
-//5. Sentir aviso de no implementada
 
 using namespace OWOGame;
 
@@ -68,9 +63,10 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
     if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player()))
         return SensationsFactory::Create();
 
-    //Caida
+    if (PED::IS_PED_RAGDOLL(Player()))
+        return SensationsFactory::Create();
 
-    if(ENTITY::IS_ENTITY_IN_WATER(Player()))
+    if (ENTITY::IS_ENTITY_IN_WATER(Player()))
         return SensationsFactory::Create();
 
     return SensationsFactory::Create(10, .2f, 20);
