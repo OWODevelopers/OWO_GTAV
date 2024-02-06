@@ -29,7 +29,7 @@ namespace OWOGTAVTESTS
 			auto sut = CreateSut(mock, inventory);
 
 			sut.Execute();
-			inventory->ammo--;
+			inventory->Shoot();
 			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelAnything());
@@ -52,9 +52,9 @@ namespace OWOGTAVTESTS
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
 			auto sut = CreateSut(mock, inventory);
 
-			inventory->ammo = 10;
+			inventory->Reload(10);
 			sut.Execute();
-			inventory->ammo = 15;
+			inventory->Reload(15);
 			sut.Execute();
 
 			Assert::IsFalse(mock->DidFeelAnything());
@@ -66,11 +66,11 @@ namespace OWOGTAVTESTS
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
 			auto sut = CreateSut(mock, inventory);
 
-			inventory->currentWeapon = 0;
-			inventory->ammo = 10;
+			inventory->Equip(0);
+			inventory->Reload(10);
 			sut.Execute();
-			inventory->currentWeapon = 1;
-			inventory->ammo = 5;
+			inventory->Equip(1);
+			inventory->Reload(5);
 			sut.Execute();
 
 			Assert::IsFalse(mock->DidFeelAnything());
@@ -82,9 +82,9 @@ namespace OWOGTAVTESTS
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
 			auto sut = CreateSut(mock, inventory, { SensationOfWeapons({ 20 }, SensationsFactory::Create(10)->ToString())});
 
-			inventory->currentWeapon = 20;
+			inventory->Equip(20);
 			sut.Execute();
-			inventory->ammo--;
+			inventory->Shoot() ;
 			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsFactory::Create(10)));
@@ -97,7 +97,7 @@ namespace OWOGTAVTESTS
 			auto sut = CreateSut(mock, inventory);
 
 			sut.Execute();
-			inventory->ammo--;
+			inventory->Shoot();
 			sut.Execute();
 
 			Assert::AreEqual(FeelRecoil::Priority, mock->WhatFelt->GetPriority());
@@ -109,9 +109,9 @@ namespace OWOGTAVTESTS
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
 			auto sut = CreateSut(mock, inventory);
 
-			inventory->currentWeapon = 1234;
+			inventory->Equip(1234);
 			sut.Execute();
-			inventory->ammo--;
+			inventory->Shoot();
 			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsParser::Parse("5")));
@@ -123,9 +123,9 @@ namespace OWOGTAVTESTS
 			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
 			auto sut = CreateSut(mock, inventory, { SensationOfWeapons({ 0 }, ""), SensationOfWeapons({10}, SensationsFactory::Create(33)->ToString())});
 
-			inventory->currentWeapon = 10;
+			inventory->Equip(10);
 			sut.Execute();
-			inventory->ammo--;
+			inventory->Shoot();
 			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsFactory::Create(33)));
