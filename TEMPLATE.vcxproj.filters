@@ -10,6 +10,7 @@
     <ClCompile Include="FeelDamage.cpp" />
     <ClCompile Include="SensationOfWeapons.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="GTAInventory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
@@ -21,5 +22,6 @@
     <ClInclude Include="script.h" />
     <ClInclude Include="FeelDamage.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="GTAInventory.h" />
   </ItemGroup>
 </Project>
