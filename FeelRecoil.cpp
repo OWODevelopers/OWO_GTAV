@@ -38,7 +38,7 @@ uniquePtr<OWOGame::Sensation> FeelRecoil::RecoilSensation()
 			return sensation.ToBeFelt();
 	} 
 
-	return OWOGame::SensationsParser::Parse("5");
+	return OWOGame::SensationsParser::Parse("12");
 }
 
 void FeelRecoil::Execute()

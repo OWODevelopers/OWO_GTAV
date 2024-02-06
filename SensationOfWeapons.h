@@ -186,7 +186,7 @@ public:
 			3675956304,
 			3219281620,
 			350597077
-		}, "2");
+		}, "8");
 	}
 
 	static SensationOfWeapons SMG() {
@@ -196,7 +196,7 @@ public:
 			4024951519,
 			3173288789,
 			2024373456 
-		}, "2");
+		}, "9");
 	}
 
 	static SensationOfWeapons Shotgun() {
@@ -210,7 +210,7 @@ public:
 			94989220,
 			4019527611,
 			317205821
-		}, "2");
+		}, "10");
 	}
 
 	static SensationOfWeapons Heavy() {
@@ -229,10 +229,10 @@ public:
 			4272043364,
 			2548703416,
 			2828843422
-		}, "2");
+		}, "11");
 	}
 
 	static SensationOfWeapons MiniGun() {
-		return SensationOfWeapons({ 1119849093 }, "2");
+		return SensationOfWeapons({ 1119849093 }, "9");
 	}
 };

@@ -36,6 +36,7 @@ MusclesGroup GetMusclesFrom(Hash bones)
         return MusclesGroup::All();
     }
 }
+
 MusclesGroup GetSideFrom(Hash bone) 
 {
     switch (bone)
@@ -86,7 +87,7 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
             }
         }
 
-        return SensationsParser::Parse("5");
+        return SensationsParser::Parse("7");
     }
 
     if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player())) 
