@@ -26,5 +26,5 @@
 #define movePtr std::move
 #define CreateNewUnique(a, b) uniquePtr<a>(new b)
 #define owoport 54020
-#define owoclamp(value, min, max) std::max(min, std::min(value, max))
+#define owoclamp(value, minimum, maximum) std::max(minimum, std::min(value, maximum))
 #endif

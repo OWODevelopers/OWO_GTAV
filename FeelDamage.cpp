@@ -9,7 +9,9 @@ void FeelDamage::Execute(int health)
 {
 	if (health < lastHealth)
 	{
-		owo->Send(body->DamageFelt()->WithMuscles(body->LastHit().WithIntensity(IntensityOf(lastHealth - health))));
+		auto sensation = body->DamageFelt()->WithMuscles(body->LastHit().WithIntensity(IntensityOf(lastHealth - health)));
+		sensation->SetPriority(FeelDamage::Priority);
+		owo->Send(movePtr(sensation));
 	}
 
 	lastHealth = health;

@@ -14,6 +14,10 @@ const Ped& GTAPlayer::Player()
 
 MusclesGroup GetMusclesFrom(Hash bones) 
 {
+    std::string log = "Single Bone hit: " + std::to_string(bones) + "\n";
+    Debug::Log((char*)log.c_str());
+
+
     switch (bones)
     {
     case 24817:
@@ -39,6 +43,9 @@ MusclesGroup GetMusclesFrom(Hash bones)
 
 MusclesGroup GetSideFrom(Hash bone) 
 {
+    std::string log = "Side Bone hit: " + std::to_string(bone) + "\n";
+    Debug::Log((char*)log.c_str());
+
     switch (bone)
     {
     case 24817:
@@ -63,19 +70,39 @@ MusclesGroup GTAPlayer::LastHit()
     Hash bone = 0;
     PED::GET_PED_LAST_DAMAGE_BONE(PLAYER::PLAYER_PED_ID(), &bone);
 
+    MusclesGroup result = MusclesGroup::All();
     switch (precision) {
     case Single:
-        return GetMusclesFrom(bone);
+        result = GetMusclesFrom(bone);
     case Side:
-        return GetMusclesFrom(bone);
-    case General:
-        return MusclesGroup::All();
+        result = GetSideFrom(bone);
     }
+
+    PED::CLEAR_PED_LAST_DAMAGE_BONE(PLAYER::PLAYER_PED_ID());
+    return result;
 }
 
 uniquePtr<Sensation> GTAPlayer::DamageFelt()
 {
-    if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), 0, 2)) 
+
+
+    if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player())) 
+    {
+        precision = Single;
+        ENTITY::CLEAR_ENTITY_LAST_DAMAGE_ENTITY(Player());
+        return SensationsParser::Parse("6");
+    }
+
+    if (PED::IS_PED_RAGDOLL(Player())) 
+    {
+        precision = General;
+        return SensationsParser::Parse("3");
+    }
+        
+    if (ENTITY::IS_ENTITY_IN_WATER(Player()))
+        return SensationsParser::Parse("4");
+
+    if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), 0, 2))
     {
         precision = Single;
         for (int i = 0; i < weapons.size(); i++)
@@ -83,28 +110,15 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
             for (auto weapon : weapons[i].weapons)
             {
                 if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), weapon, 0))
+                {
                     return SensationsParser::Parse(weapons[i].toBeFelt);
+                }
             }
         }
 
         return SensationsParser::Parse("7");
     }
 
-    if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player())) 
-    {
-        Debug::Log("Vehicle");
-        precision = Side;
-        return SensationsParser::Parse("6");
-    }
-
-    if (PED::IS_PED_RAGDOLL(Player())) 
-    {
-        precision = Side;
-        return SensationsParser::Parse("3");
-    }
-
-    if (ENTITY::IS_ENTITY_IN_WATER(Player()))
-        return SensationsParser::Parse("4");
 
     return SensationsParser::Parse("5");
 }
