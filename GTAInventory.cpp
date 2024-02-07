@@ -16,5 +16,5 @@ int GTAInventory::CurrentWeapon()
 
 bool GTAInventory::HoldingWeapon()
 {
-    return true;
+    return WEAPON::IS_PED_WEAPON_READY_TO_SHOOT(PLAYER::PLAYER_PED_ID());
 }
