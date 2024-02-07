@@ -2,7 +2,7 @@
 #include "../OWOAPI/Domain/SensationsFactory.h"
 
 int IntensityOf(int healthDifference) {
-	return OWOGame::Math::Clamp(healthDifference, 20, 100);
+	return OWOGame::Math::Clamp(healthDifference, 50, 100);
 }
 
 void FeelDamage::Execute(int health)
