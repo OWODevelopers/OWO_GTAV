@@ -85,17 +85,16 @@ MusclesGroup GTAPlayer::LastHit()
 uniquePtr<Sensation> GTAPlayer::DamageFelt()
 {
 
-
     if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ANY_VEHICLE(Player())) 
     {
-        precision = Single;
+        precision = Side;
         ENTITY::CLEAR_ENTITY_LAST_DAMAGE_ENTITY(Player());
         return SensationsParser::Parse("6");
     }
 
     if (PED::IS_PED_RAGDOLL(Player())) 
     {
-        precision = General;
+        precision = Side;
         return SensationsParser::Parse("3");
     }
         
