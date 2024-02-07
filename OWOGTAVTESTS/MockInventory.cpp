@@ -24,3 +24,8 @@ void MockInventory::Reload(int clipSize)
 {
 	ammo = clipSize;
 }
+
+bool MockInventory::HoldingWeapon() 
+{
+	return true;
+}

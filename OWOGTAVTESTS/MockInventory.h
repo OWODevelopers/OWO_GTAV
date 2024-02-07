@@ -10,6 +10,7 @@ private:
 public:
 	int CurrentAmmo() override;
 	int CurrentWeapon() override;
+	bool HoldingWeapon() override;
 
 	void Shoot();
 	void Equip(int weapon);
