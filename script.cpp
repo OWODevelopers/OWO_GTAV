@@ -37,6 +37,8 @@ int main() {
 
 	Debug::Start();
 
+	bool isDead = false;
+
 	while (true)
 	{
 		if (IsKeyDown(VK_F3)) 
@@ -70,6 +72,18 @@ int main() {
 
 					instance->Send(OWOGame::SensationsFactory::Create(100, .2f, (velocity / 50) * 100)->WithMuscles(JoinMuscles(left, right)));
 				}
+			}
+
+			if (PLAYER::IS_PLAYER_DEAD(PLAYER::GET_PLAYER_INDEX()) && !isDead)
+			{
+				auto sensation = SensationsParser::Parse("100,1,100,0,0,0,Death|0%100,1%100,2%100,3%100,4%100,5%100,6%100,7%100,8%100,9%100&45,30,90,0,500,0,Death|0%100,1%100,2%100,3%100,4%100,5%100,6%100,7%100,8%100,9%100");
+				sensation->SetPriority(5);
+				instance->Send(movePtr(sensation));
+				isDead = true;
+			}
+			else if(!PLAYER::IS_PLAYER_DEAD(PLAYER::GET_PLAYER_INDEX())) 
+			{
+				isDead = false;
 			}
 		}		
 
