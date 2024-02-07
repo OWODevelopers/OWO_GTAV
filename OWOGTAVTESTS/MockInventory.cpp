@@ -25,7 +25,12 @@ void MockInventory::Reload(int clipSize)
 	ammo = clipSize;
 }
 
+void MockInventory::StoreWeapon()
+{
+	isHolding = false;
+}
+
 bool MockInventory::HoldingWeapon() 
 {
-	return true;
+	return isHolding;
 }

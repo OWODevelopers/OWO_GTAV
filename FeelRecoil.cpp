@@ -43,6 +43,8 @@ uniquePtr<OWOGame::Sensation> FeelRecoil::RecoilSensation()
 
 void FeelRecoil::Execute()
 {
+	if (!playerInventory->HoldingWeapon()) return;
+
 	if (DidChangeWeapon())
 	{
 		ResetEquipedWeapon();
