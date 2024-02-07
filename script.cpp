@@ -58,7 +58,7 @@ int main() {
 				Vector3 speed = ENTITY::GET_ENTITY_SPEED_VECTOR(PED::GET_VEHICLE_PED_IS_IN(playerPed, FALSE), TRUE);
 				auto velocity = magnitude(speed.x, speed.y, speed.z);
 				std::string log = std::to_string(speed.x) + ", " + std::to_string(speed.y) + ", " + std::to_string(speed.z) + "\n";
-				Debug::Log((char*)log.c_str());
+				//Debug::Log((char*)log.c_str());
 
 				if (velocity > 3) 
 				{
@@ -71,9 +71,13 @@ int main() {
 						right = right.WithIntensity(50);
 
 					auto tesda = ((velocity / 50) * 100);
-					if (tesda > 70) tesda = 70;
+					if (tesda > 20) tesda = 20;
 
-					instance->Send(OWOGame::SensationsFactory::Create(100, .2f, tesda)->WithMuscles(JoinMuscles(left, right)));
+					Debug::Log((char*)std::to_string(tesda).c_str());
+
+					auto sensation = OWOGame::SensationsFactory::Create(60, .2f, tesda)->WithMuscles(JoinMuscles(left, right));
+
+					instance->Send(movePtr(sensation));
 				}
 			}
 
