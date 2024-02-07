@@ -7,7 +7,7 @@ class FeelRecoil
 {
 private:
 	sharedPtr<OWOGame::OWO> owo = nullptr;
-	sharedPtr<PlayerInventory> playerInventory = nullptr;
+	sharedPtr<PlayerInventory> inventory = nullptr;
 	std::vector<SensationOfWeapons> sensations = {};
 
 	int ammo = 0;
@@ -22,7 +22,7 @@ private:
 public:
 	static const int Priority = 3;
 
-	FeelRecoil(sharedPtr<OWOGame::OWO> device, sharedPtr<PlayerInventory> inventory, std::vector<SensationOfWeapons> sensations) : owo(device), playerInventory(inventory), sensations(sensations){}
+	FeelRecoil(sharedPtr<OWOGame::OWO> device, sharedPtr<PlayerInventory> inventory, std::vector<SensationOfWeapons> sensations) : owo(device), inventory(inventory), sensations(sensations){}
 	~FeelRecoil(){}
 	void Execute();
 };
