@@ -6,12 +6,15 @@ class MockInventory : public PlayerInventory{
 private:
 	int ammo = 0;
 	int currentWeapon = 0;
+	bool isHolding = true;
 
 public:
 	int CurrentAmmo() override;
 	int CurrentWeapon() override;
+	bool HoldingWeapon() override;
 
 	void Shoot();
 	void Equip(int weapon);
 	void Reload(int clipSize);
+	void StoreWeapon();
 };

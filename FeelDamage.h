@@ -7,8 +7,8 @@ private:
 	sharedPtr<OWOGame::OWO> owo = nullptr;
 	sharedPtr<PlayerBody> body = nullptr;
 	short lastHealth = 0;
-	static const int Priority = 4;
 public:
+	static const int Priority = 4;
 	FeelDamage(sharedPtr<OWOGame::OWO> device, sharedPtr<PlayerBody> body) : owo(device), body(body){}
 
 	void Execute(int hp);

@@ -4,7 +4,7 @@
 
 void FeelRecoil::ResetEquipedWeapon()
 {
-	equipedWeapon = playerInventory->CurrentWeapon();
+	equipedWeapon = inventory->CurrentWeapon();
 	UpdateAmmo();
 }
 
@@ -17,17 +17,17 @@ void FeelRecoil::SendRecoilSensation()
 
 bool FeelRecoil::DidShoot()
 {
-	return playerInventory->CurrentAmmo() < ammo;
+	return inventory->CurrentAmmo() < ammo;
 }
 
 bool FeelRecoil::DidChangeWeapon()
 {
-	return equipedWeapon != playerInventory->CurrentWeapon();
+	return equipedWeapon != inventory->CurrentWeapon();
 }
 
 void FeelRecoil::UpdateAmmo()
 {
-	ammo = playerInventory->CurrentAmmo();
+	ammo = inventory->CurrentAmmo();
 }
 
 uniquePtr<OWOGame::Sensation> FeelRecoil::RecoilSensation()
@@ -43,6 +43,8 @@ uniquePtr<OWOGame::Sensation> FeelRecoil::RecoilSensation()
 
 void FeelRecoil::Execute()
 {
+	if (!inventory->HoldingWeapon()) return;
+
 	if (DidChangeWeapon())
 	{
 		ResetEquipedWeapon();

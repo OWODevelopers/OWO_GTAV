@@ -8,7 +8,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace OWOGTAVTESTS
 {
-	TEST_CLASS(OWOGTAVTESTS)
+	TEST_CLASS(FeelDamageTests)
 	{
 	public:
 		FeelDamage CreateSut(sharedPtr<OWOGame::OWO> device = nullptr, sharedPtr<PlayerBody> body = nullptr) 
@@ -98,6 +98,18 @@ namespace OWOGTAVTESTS
 			sut.Execute(50);
 
 			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsFactory::Create(20)));
+		}
+
+		TEST_METHOD(Assign_CorrectPriority)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockBody> body = CreateNewUnique(MockBody, MockBody(MusclesGroup({ Muscle::Abdominal_R() })));
+			auto sut = CreateSut(mock, body);
+
+			sut.Execute(100);
+			sut.Execute(50);
+
+			Assert::IsTrue(mock->WhatFelt->GetPriority() == FeelDamage::Priority);
 		}
 	};
 }

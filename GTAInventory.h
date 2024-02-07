@@ -3,6 +3,7 @@
 
 class GTAInventory : public PlayerInventory {
 	
-	virtual int CurrentAmmo() override;
-	virtual int CurrentWeapon() override;
+	int CurrentAmmo() override;
+	int CurrentWeapon() override;
+	bool HoldingWeapon() override;
 };

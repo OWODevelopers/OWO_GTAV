@@ -130,5 +130,19 @@ namespace OWOGTAVTESTS
 
 			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsFactory::Create(33)));
 		}
+
+		TEST_METHOD(DoNotFeel_IfNotHoldingWeapon)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockInventory> inventory = CreateNewUnique(MockInventory, MockInventory());
+			auto sut = CreateSut(mock, inventory);
+
+			sut.Execute();
+			inventory->StoreWeapon();
+			inventory->Shoot();
+			sut.Execute();
+
+			Assert::IsFalse(mock->DidFeelAnything());
+		}
 	};
 }

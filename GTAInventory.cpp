@@ -13,3 +13,8 @@ int GTAInventory::CurrentWeapon()
 {
     return WEAPON::GET_SELECTED_PED_WEAPON(PLAYER::PLAYER_PED_ID());
 }
+
+bool GTAInventory::HoldingWeapon()
+{
+    return WEAPON::IS_PED_WEAPON_READY_TO_SHOOT(PLAYER::PLAYER_PED_ID());
+}
