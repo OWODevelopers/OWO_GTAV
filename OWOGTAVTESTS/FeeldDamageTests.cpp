@@ -8,7 +8,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace OWOGTAVTESTS
 {
-	TEST_CLASS(OWOGTAVTESTS)
+	TEST_CLASS(FeelDamageTests)
 	{
 	public:
 		FeelDamage CreateSut(sharedPtr<OWOGame::OWO> device = nullptr, sharedPtr<PlayerBody> body = nullptr) 

@@ -18,7 +18,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OWOGTAVTESTS.cpp">
+    <ClCompile Include="FeeldDamageTests.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="HapticDevice.cpp">
