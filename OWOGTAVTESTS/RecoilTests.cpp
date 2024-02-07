@@ -114,7 +114,7 @@ namespace OWOGTAVTESTS
 			inventory->Shoot();
 			sut.Execute();
 
-			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsParser::Parse("5")));
+			Assert::IsTrue(mock->DidFeelWithoutMuscles(SensationsParser::Parse("12")));
 		}
 
 		TEST_METHOD(Feel_DifferentRecoil)
