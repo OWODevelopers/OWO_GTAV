@@ -2,9 +2,9 @@
 #include "HapticDevice.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
 #include "MockBody.h"
-#include "../FeelDriving.h"
-#include "../MockVehicle.h"
-#include "../VehicleEngine.h"
+#include "FeelDriving.h"
+#include "MockVehicle.h"
+#include "VehicleEngine.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -14,13 +14,19 @@ namespace OWOGTAVTESTS
 	{
 	public:
 
+		FeelDriving CreateSut(sharedPtr<MockDevice> device = nullptr, sharedPtr<MockVehicle> vehicle = nullptr, sharedPtr <VehicleEngine> engine = nullptr)
+		{
+			sharedPtr<MockDevice> finalDevice = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
+			sharedPtr<MockVehicle> doc = vehicle == nullptr ? CreateNewUnique(MockVehicle, MockVehicle()) : vehicle;
+			auto finalEngine = engine == nullptr ? VehicleEngine(0, 100, 0, 40) : *engine;
+
+			return FeelDriving(finalDevice, doc, finalEngine);
+		}
+
 		TEST_METHOD(FeelNothing_WheNotDriving)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
-			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-			auto engine = VehicleEngine(0, 100, 0, 40);
-
-			auto sut = FeelDriving(mock, doc, engine);
+			auto sut = CreateSut(mock);
 
 			sut.Execute();
 
@@ -31,9 +37,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-			auto engine = VehicleEngine(0, 100, 0, 40);
-
-			auto sut = FeelDriving(mock, doc, engine);
+			auto sut = CreateSut(mock, doc);
 
 			doc->DriveAt(100);
 
@@ -46,9 +50,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-
-			auto engine = VehicleEngine(0, 100, 0, 40);
-			auto sut = FeelDriving(mock, doc, engine);
+			auto sut = CreateSut(mock, doc);
 
 			doc->DriveAt(100);
 			sut.Execute();
@@ -81,9 +83,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-
-			auto engine = VehicleEngine(0, 100, 0, 40);
-			auto sut = FeelDriving(mock, doc, engine);
+			auto sut = CreateSut(mock, doc);
 
 			doc->DriveAt(100);
 			sut.Execute();
@@ -95,9 +95,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-
-			auto engine = VehicleEngine(0, 100, 0, 40);
-			auto sut = FeelDriving(mock, doc, engine);
+			auto sut = CreateSut(mock, doc);
 
 			doc->DriveAt(100);
 			doc->DriveBackwards();
@@ -110,9 +108,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-
-			auto engine = VehicleEngine(0, 100, 0, 40);
-			auto sut = FeelDriving(mock, doc, engine);
+			auto sut = CreateSut(mock, doc);
 
 			doc->DriveAt(100);
 			sut.Execute();
@@ -126,9 +122,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-
-			auto engine = VehicleEngine(0, 100, 0, 40);
-			auto sut = FeelDriving(mock, doc, engine);
+			auto sut = CreateSut(mock, doc);
 
 			doc->DriveAt(100);
 			sut.Execute();
@@ -143,9 +137,7 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-
-			auto engine = VehicleEngine(0, 100, 0, 40);
-			auto sut = FeelDriving(mock, doc, engine);
+			auto sut = CreateSut(mock, doc);
 
 			doc->DriveAt(100);
 			sut.Execute();
