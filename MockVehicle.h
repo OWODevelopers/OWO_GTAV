@@ -11,7 +11,8 @@ public:
 	
 	void DriveAt(int newVelocity);
 	void DriveBackwards();
-	void ExitTheCar();
+	void ExitTheVehicle();
+	void EnterTheVehicle();
 
 	int Velocity() override;
 	bool DrivingForward() override;

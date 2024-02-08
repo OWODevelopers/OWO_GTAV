@@ -3,7 +3,11 @@
 
 void FeelDriving::Execute()
 {
-	if (!vehicle->IsDriving()) return;
+	if (!vehicle->IsDriving())
+	{
+		lastVelocity = 0;
+		return;
+	} 
 
 	if (!CanFeelDriving()) return;
 

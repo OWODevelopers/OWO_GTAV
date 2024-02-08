@@ -126,17 +126,35 @@ namespace OWOGTAVTESTS
 			Assert::AreEqual(90, mock->IntensityOfLastFelt());
 		}
 
-		TEST_METHOD(StopFeeling_AfterExitingCar)
+		TEST_METHOD(StopFeeling_AfterExitingVehicle)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
 			auto sut = CreateSut(mock, doc);
 
-			doc->ExitTheCar();
+			doc->ExitTheVehicle();
 			doc->DriveAt(100);
 			sut.Execute();
 
 			Assert::IsFalse(mock->DidFeelAnything());
+		}
+
+		TEST_METHOD(ResetLastVelocity_AfterLeavingVehicle)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+			auto sut = CreateSut(mock, doc);
+
+			doc->DriveAt(100);
+			sut.Execute();
+			doc->ExitTheVehicle();
+			doc->DriveAt(0);
+			sut.Execute();
+			doc->EnterTheVehicle();
+			sut.Execute();
+
+
+			Assert::AreEqual(1, mock->HowManyFelt());
 		}
 	};
 }
