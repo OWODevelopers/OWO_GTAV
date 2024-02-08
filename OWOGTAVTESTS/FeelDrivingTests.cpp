@@ -71,5 +71,10 @@ namespace OWOGTAVTESTS
 			Assert::AreEqual(30, VehicleEngine(0, 50, 20, 40).IntensityAt(25));
 			Assert::AreEqual(60, VehicleEngine(10, 20, 40, 80).IntensityAt(15));
 		}
+
+		TEST_METHOD(Limit_AtMaxIntensity)
+		{
+			Assert::AreEqual(80, VehicleEngine(10, 100, 0, 80).IntensityAt(120));
+		}
 	};
 }

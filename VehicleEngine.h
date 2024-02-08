@@ -15,11 +15,16 @@ struct VehicleEngine {
 		return a + f * (b - a);
 	}
 
+	float PercentageFrom(double velocity) 
+	{
+		return OWOGame::Math::Clamp(((velocity - minVelocity) / (maxVelocity - minVelocity)), (double) 0, (double) 1);
+	}
+
 	int IntensityAt(double velocity) 
 	{
 		if (velocity < minVelocity) return 0;
 		if (velocity == minVelocity) return minIntensity;
-
-		return lerp(minIntensity, maxIntensity, ((velocity - minVelocity) / (maxVelocity - minVelocity)));
+		 
+		return lerp(minIntensity, maxIntensity, PercentageFrom(velocity));
 	}
 };
