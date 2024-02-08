@@ -20,7 +20,7 @@ namespace OWOGTAVTESTS
 			sharedPtr<MockVehicle> doc = vehicle == nullptr ? CreateNewUnique(MockVehicle, MockVehicle()) : vehicle;
 			auto finalEngine = engine == nullptr ? IntensityLerp(0, 100, 0, 40) : *engine;
 
-			return FeelDriving(finalDevice, doc, finalEngine);
+			return FeelDriving(finalDevice, doc, finalEngine, IntensityLerp(10, 60, 40, 90));
 		}
 
 		TEST_METHOD(FeelNothing_WheNotDriving)

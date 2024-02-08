@@ -8,9 +8,9 @@ int FeelDriving::ImpactIntensity()
 
 void FeelDriving::Execute()
 {
-	if (forImpact.IntensityAt(lastVelocity - vehicle->Velocity()) > 0)
+	if (forImpacts.IntensityAt(lastVelocity - vehicle->Velocity()) > 0)
 	{
-		device->Send(OWOGame::SensationsFactory::Create(100, .1f, forImpact.IntensityAt(lastVelocity - vehicle->Velocity()))->WithMuscles(OWOGame::MusclesGroup::All()));
+		device->Send(OWOGame::SensationsFactory::Create(100, .1f, forImpacts.IntensityAt(lastVelocity - vehicle->Velocity()))->WithMuscles(OWOGame::MusclesGroup::All()));
 		lastVelocity = vehicle->Velocity();
 		return;
 	}
