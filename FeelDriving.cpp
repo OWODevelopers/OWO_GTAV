@@ -3,14 +3,15 @@
 
 int FeelDriving::ImpactIntensity()
 {
-	return lastVelocity - vehicle->Velocity();
+	return OWOGame::Math::Clamp(lastVelocity - vehicle->Velocity(), 0, 90);
 }
 
 void FeelDriving::Execute()
 {
 	if (ImpactIntensity() > 20) 
 	{
-		device->Send(OWOGame::SensationsFactory::Create()->WithMuscles(OWOGame::MusclesGroup::All()));
+		device->Send(OWOGame::SensationsFactory::Create(100, .1f, ImpactIntensity())->WithMuscles(OWOGame::MusclesGroup::All()));
+		lastVelocity = vehicle->Velocity();
 		return;
 	}
 

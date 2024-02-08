@@ -7,6 +7,7 @@ class MockDevice : public OWO
 {
 private:
     bool HasMuscles();
+    int sensationsFelt = 0;
 public:
     MockDevice() : OWO(nullptr) {}
     ~MockDevice() {}
@@ -31,4 +32,5 @@ public:
     bool DidFeelWithoutMuscles(uniquePtr<Sensation> sensation);
     bool DidFeelAnything();
     int IntensityOfLastFelt();
+    int HowManyFelt();
 };

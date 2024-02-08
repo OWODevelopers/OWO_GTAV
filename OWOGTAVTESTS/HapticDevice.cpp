@@ -16,6 +16,8 @@ void MockDevice::Send(uniquePtr<OWOGame::Sensation> sensation)
 	WhatFelt = movePtr(sensation);
 	if (HasMuscles())
 		WhereFelt = dynamic_cast<SensationWithMuscles*>(WhatFelt.get())->muscles;
+
+	sensationsFelt++;
 }
 
 void MockDevice::Stop()
@@ -91,4 +93,9 @@ bool MockDevice::DidFeelAnything()
 int MockDevice::IntensityOfLastFelt()
 {
 	return std::stoi(OWOGame::String::Split(WhatFelt->ToString(), ',')[2]);
+}
+
+int MockDevice::HowManyFelt()
+{
+	return sensationsFelt;
 }
