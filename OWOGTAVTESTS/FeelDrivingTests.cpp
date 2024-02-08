@@ -58,9 +58,12 @@ namespace OWOGTAVTESTS
 
 		TEST_METHOD(DontFeel_Below_MinVelocity)
 		{
-			auto sut = VehicleEngine(3, 100, 0, 40);
+			Assert::AreEqual(0, VehicleEngine(3, 100, 20, 40).IntensityAt(2));
+		}
 
-			Assert::AreEqual(0, sut.IntensityAt(2));
+		TEST_METHOD(Feel_MinIntensity)
+		{
+			Assert::AreEqual(1, VehicleEngine(6, 100, 1, 40).IntensityAt(6));
 		}
 	};
 }

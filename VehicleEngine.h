@@ -14,6 +14,7 @@ struct VehicleEngine {
 	int IntensityAt(double velocity) 
 	{
 		if (velocity < minVelocity) return 0;
+		if (velocity == minVelocity) return minIntensity;
 
 		return maxIntensity;
 		//OWOGame::Math::Clamp(velocity, minIntensity, maxIntensity)
