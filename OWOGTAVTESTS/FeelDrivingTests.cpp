@@ -90,5 +90,20 @@ namespace OWOGTAVTESTS
 
 			Assert::IsTrue(mock->DidFeelInEvery(MusclesGroup::Back()));
 		}
+
+		TEST_METHOD(Feel_At_FrontMuscles_WhileDriving_Backwards)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+
+			auto engine = VehicleEngine(0, 100, 0, 40);
+			auto sut = FeelDriving(mock, doc, engine);
+
+			doc->DriveAt(100);
+			doc->DriveBackwards();
+			sut.Execute();
+
+			Assert::IsTrue(mock->DidFeelInEvery(MusclesGroup::Front()));
+		}
 	};
 }

@@ -5,6 +5,6 @@ void FeelDriving::Execute()
 {
 	if (vehicle->Velocity() <= 0)return;
 
-
-	device->Send(OWOGame::SensationsFactory::Create(100, .1f, engine.IntensityAt(vehicle->Velocity()))->WithMuscles(OWOGame::MusclesGroup::Back()));
+	auto whereFeels = vehicle->DrivingForward() ? OWOGame::MusclesGroup::Back() : OWOGame::MusclesGroup::Front();
+	device->Send(OWOGame::SensationsFactory::Create(100, .1f, engine.IntensityAt(vehicle->Velocity()))->WithMuscles(whereFeels));
 }
