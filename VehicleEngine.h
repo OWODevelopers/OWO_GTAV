@@ -23,7 +23,6 @@ struct VehicleEngine {
 	int IntensityAt(double velocity) 
 	{
 		if (velocity < minVelocity) return 0;
-		if (velocity == minVelocity) return minIntensity;
 		 
 		return lerp(minIntensity, maxIntensity, PercentageFrom(velocity));
 	}
