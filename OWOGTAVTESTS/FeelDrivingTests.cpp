@@ -65,5 +65,11 @@ namespace OWOGTAVTESTS
 		{
 			Assert::AreEqual(1, VehicleEngine(6, 100, 1, 40).IntensityAt(6));
 		}
+
+		TEST_METHOD(Feel_Intensity_InBetween)
+		{
+			Assert::AreEqual(30, VehicleEngine(0, 50, 20, 40).IntensityAt(25));
+			Assert::AreEqual(60, VehicleEngine(10, 20, 40, 80).IntensityAt(15));
+		}
 	};
 }

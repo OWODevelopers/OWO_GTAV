@@ -10,13 +10,16 @@ struct VehicleEngine {
 	VehicleEngine(double minVelocity, double maxVelocity, int minIntensity, int maxIntensity)
 		: minVelocity(minVelocity), maxVelocity(maxVelocity), minIntensity(minIntensity), maxIntensity(maxIntensity) {}
 
+	float lerp(float a, float b, float f)
+	{
+		return a + f * (b - a);
+	}
 
 	int IntensityAt(double velocity) 
 	{
 		if (velocity < minVelocity) return 0;
 		if (velocity == minVelocity) return minIntensity;
 
-		return maxIntensity;
-		//OWOGame::Math::Clamp(velocity, minIntensity, maxIntensity)
+		return lerp(minIntensity, maxIntensity, ((velocity - minVelocity) / (maxVelocity - minVelocity)));
 	}
 };
