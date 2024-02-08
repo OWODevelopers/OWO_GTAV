@@ -2,6 +2,7 @@
 #include <vector>
 #include "../OWOAPI/Domain/Sensation.h"
 #include "../OWOAPI/Domain/SensationsParser.h"
+#include "SensationsCollection.h"
 
 class SensationOfWeapons
 {
@@ -53,7 +54,7 @@ public:
 		2484171525,
 		3441901897,
 		419712736,
-		940833800 }, "0");
+		940833800 }, SensationsCollection::Melee);
 	}
 	static SensationOfWeapons Bullet()
 	{
@@ -133,7 +134,7 @@ public:
 	3347935668,
 	350597077,
 	485882440,
-	1924557585 }, "1");
+	1924557585 }, SensationsCollection::Bullet);
 	}
 	static SensationOfWeapons Explosive()
 	{
@@ -164,7 +165,7 @@ public:
 	84788907,
 	125959754,
 	3125143736,
-	3676729658 }, "2");
+	3676729658 }, SensationsCollection::Explosive);
 	}
 
 	// Recoils
@@ -186,7 +187,7 @@ public:
 			3675956304,
 			3219281620,
 			350597077
-		}, "8");
+		}, SensationsCollection::Pistol);
 	}
 
 	static SensationOfWeapons SMG() {
@@ -196,7 +197,7 @@ public:
 			4024951519,
 			3173288789,
 			2024373456 
-		}, "9");
+		}, SensationsCollection::SMG);
 	}
 
 	static SensationOfWeapons Shotgun() {
@@ -210,7 +211,7 @@ public:
 			94989220,
 			4019527611,
 			317205821
-		}, "10");
+		}, SensationsCollection::Shotgun);
 	}
 
 	static SensationOfWeapons Heavy() {
@@ -229,10 +230,10 @@ public:
 			4272043364,
 			2548703416,
 			2828843422
-		}, "11");
+		}, SensationsCollection::Heavy);
 	}
 
 	static SensationOfWeapons MiniGun() {
-		return SensationOfWeapons({ 1119849093 }, "9");
+		return SensationOfWeapons({ 1119849093 }, SensationsCollection::SMG);
 	}
 };

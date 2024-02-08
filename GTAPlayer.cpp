@@ -4,6 +4,7 @@
 #include <natives.h>
 #include <types.h>
 #include "Debug.h"
+#include "SensationsCollection.h"
 
 using namespace OWOGame;
 
@@ -89,17 +90,17 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
     {
         precision = Side;
         ENTITY::CLEAR_ENTITY_LAST_DAMAGE_ENTITY(Player());
-        return SensationsParser::Parse("6");
+        return SensationsCollection::Get(SensationsCollection::Vehicle);
     }
 
     if (PED::IS_PED_RAGDOLL(Player())) 
     {
         precision = Side;
-        return SensationsParser::Parse("3");
+        return SensationsCollection::Get(SensationsCollection::Fall);
     }
         
     if (ENTITY::IS_ENTITY_IN_WATER(Player()))
-        return SensationsParser::Parse("4");
+        return SensationsCollection::Get(SensationsCollection::Drowning);
 
     if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), 0, 2))
     {
@@ -110,14 +111,13 @@ uniquePtr<Sensation> GTAPlayer::DamageFelt()
             {
                 if (WEAPON::HAS_PED_BEEN_DAMAGED_BY_WEAPON(PLAYER::PLAYER_PED_ID(), weapon, 0))
                 {
-                    return SensationsParser::Parse(weapons[i].toBeFelt);
+                    return SensationsCollection::Get(weapons[i].toBeFelt);
                 }
             }
         }
 
-        return SensationsParser::Parse("7");
+        return SensationsCollection::Get(SensationsCollection::Warning);
     }
 
-
-    return SensationsParser::Parse("5");
+    return SensationsCollection::Get(SensationsCollection::Default);
 }

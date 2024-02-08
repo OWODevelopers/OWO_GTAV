@@ -14,6 +14,7 @@ const string SensationsCollection::Shotgun = "10~Shotgun~100,1,70,0,0,0,|5%100,4
 const string SensationsCollection::Vehicle= "7~Vehicle~100,1,75,0,0,0,&100,11,75,0,1100,0,~impact-7~Impacts";
 const string SensationsCollection::SMG = "9~SMG~20,1,50,0,0,0,|4%100,5%100~weapon-3~Recoil";
 const string SensationsCollection::Warning = "0~Warning~63,1,47,0,0,2,|9%100,8%100&63,1,47,0,0,0,|9%100,8%100~weapon-0~";
+const string SensationsCollection::Death = "13~Death~100,1,100,0,0,0,Death|0%100,1%100,2%100,3%100,4%100,5%100,6%100,7%100,8%100,9%100&45,30,90,0,500,0,Death|0%100,1%100,2%100,3%100,4%100,5%100,6%100,7%100,8%100,9%100~health-4";
 
 
 owoVector<owoString> SensationsCollection::All =
@@ -30,7 +31,8 @@ owoVector<owoString> SensationsCollection::All =
     Shotgun,
     Vehicle,
     SMG,
-    Warning
+    Warning,
+    Death
 };
 
 uniquePtr<Sensation> Parse(owoString theSensation, int priority)

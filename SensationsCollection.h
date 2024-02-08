@@ -10,6 +10,7 @@ class SensationsCollection
 {
 public:
 	static const string Default;
+	static const string Death;
 
 	// Impacts
 	static const string Bullet;
