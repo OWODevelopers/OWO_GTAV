@@ -168,6 +168,7 @@
     <ClCompile Include="MockInventory.cpp" />
     <ClCompile Include="FeeldDamageTests.cpp" />
     <ClCompile Include="RecoilTests.cpp" />
+    <ClCompile Include="VehicleEngineTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\MockVehicle.h" />
