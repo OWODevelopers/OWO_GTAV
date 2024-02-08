@@ -7,4 +7,3 @@ class GTAVehicle : public OWOVehicle
 	bool DrivingForward() override;
 	bool IsDriving() override;
 };
-

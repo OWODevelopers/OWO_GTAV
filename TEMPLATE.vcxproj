@@ -22,6 +22,7 @@
     <ClCompile Include="script.cpp" />
     <ClCompile Include="FeelDamage.cpp" />
     <ClCompile Include="SensationOfWeapons.cpp" />
+    <ClCompile Include="SensationsCollection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="PlayerInventory.h" />
     <ClInclude Include="script.h" />
     <ClInclude Include="FeelDamage.h" />
+    <ClInclude Include="SensationsCollection.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="IntensityLerp.h" />
   </ItemGroup>

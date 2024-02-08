@@ -12,6 +12,7 @@
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="GTAInventory.cpp" />
     <ClCompile Include="FeelDriving.cpp" />
+    <ClCompile Include="SensationsCollection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
@@ -27,5 +28,6 @@
     <ClInclude Include="FeelDriving.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="IntensityLerp.h" />
+    <ClInclude Include="SensationsCollection.h" />
   </ItemGroup>
 </Project>
