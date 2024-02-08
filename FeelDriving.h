@@ -15,6 +15,8 @@ private:
 	int ImpactIntensity();
 	bool DidImpact();
 	OWOGame::MusclesGroup SteeringMuscles();
+	uniquePtr<OWOGame::Sensation> DrivingSensation();
+	bool CanFeelDriving();
 public:
 	FeelDriving(sharedPtr<OWOGame::OWO> device, sharedPtr<Vehicle> vehicle, IntensityLerp engine, IntensityLerp forImpacts) 
 		: device(device), vehicle(vehicle), engine(engine), forImpacts(forImpacts) {}
