@@ -55,5 +55,12 @@ namespace OWOGTAVTESTS
 
 			Assert::AreEqual(40, mock->IntensityOfLastFelt());
 		}
+
+		TEST_METHOD(DontFeel_Below_MinVelocity)
+		{
+			auto sut = VehicleEngine(3, 100, 0, 40);
+
+			Assert::AreEqual(0, sut.IntensityAt(2));
+		}
 	};
 }
