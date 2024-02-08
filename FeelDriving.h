@@ -9,6 +9,7 @@ private:
 	sharedPtr<OWOGame::OWO> device = nullptr;
 	sharedPtr<Vehicle> vehicle = nullptr;
 	VehicleEngine engine = VehicleEngine(0,0,0,0);
+	VehicleEngine forImpact = VehicleEngine(10,60,40,90);
 	int lastVelocity;
 
 	int ImpactIntensity();
