@@ -27,6 +27,7 @@ public:
     void ChangeUpdateFrequency(uint64_t newFrequency) override;
 
     bool DidFeelIn(Muscle muscle);
+    bool DidFeelInEvery(MusclesGroup allMuscles);
     bool DidFeelWithoutMuscles(uniquePtr<Sensation> sensation);
     bool DidFeelAnything();
     int IntensityOfLastFelt();

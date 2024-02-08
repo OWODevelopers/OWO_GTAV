@@ -70,6 +70,11 @@ bool MockDevice::DidFeelIn(Muscle aMuscle)
 	return false;
 }
 
+bool MockDevice::DidFeelInEvery(MusclesGroup allMuscles)
+{
+	return WhereFelt.ToString() == allMuscles.ToString();
+}
+
 bool MockDevice::DidFeelWithoutMuscles(uniquePtr<Sensation> sensation)
 {
 	if (HasMuscles())

@@ -76,5 +76,19 @@ namespace OWOGTAVTESTS
 		{
 			Assert::AreEqual(80, VehicleEngine(10, 100, 0, 80).IntensityAt(120));
 		}
+
+		TEST_METHOD(FeelVelocity_At_BackMuscles)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+
+			auto engine = VehicleEngine(0, 100, 0, 40);
+			auto sut = FeelDriving(mock, doc, engine);
+
+			doc->DriveAt(100);
+			sut.Execute();
+
+			Assert::IsTrue(mock->DidFeelInEvery(MusclesGroup::Back()));
+		}
 	};
 }
