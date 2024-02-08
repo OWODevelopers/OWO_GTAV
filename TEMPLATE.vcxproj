@@ -35,6 +35,7 @@
     <ClInclude Include="PlayerInventory.h" />
     <ClInclude Include="script.h" />
     <ClInclude Include="FeelDamage.h" />
+    <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="OWOAPI\OWOAPI.vcxproj">

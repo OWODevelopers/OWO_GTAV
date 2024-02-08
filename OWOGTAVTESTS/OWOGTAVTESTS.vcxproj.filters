@@ -36,6 +36,9 @@
     <ClCompile Include="FeelDrivingTests.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\MockVehicle.cpp">
+      <Filter>Mocks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HapticDevice.h">
@@ -45,6 +48,9 @@
       <Filter>Mocks</Filter>
     </ClInclude>
     <ClInclude Include="MockInventory.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MockVehicle.h">
       <Filter>Mocks</Filter>
     </ClInclude>
   </ItemGroup>
