@@ -3,22 +3,15 @@
 #include "OWOAPI/Domain/SensationsFactory.h"
 #include "consoleLogger.h"
 #include "GTAPlayer.h"
+#include "GTAVehicle.h"
 #include "FeelDamage.h"
 #include "GTAInventory.h"
 #include "FeelRecoil.h"
+#include "FeelDriving.h"
 #include "Debug.h"
 #include "OWOAPI/Domain/MusclesParser.h"
 
 using namespace OWOGame;
-
-double magnitude(double x, double y, double z) {
-	return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
-}
-
-MusclesGroup JoinMuscles(MusclesGroup left, MusclesGroup right) {
-	return MusclesParser::Parse(left.ToString() + "," + right.ToString());
-}
-
 
 int main() {
 
@@ -32,9 +25,10 @@ int main() {
 	
 	auto player = std::shared_ptr<GTAPlayer>(new GTAPlayer({ SensationOfWeapons::Melee(), SensationOfWeapons::Bullet(), SensationOfWeapons::Explosive() }));
 	auto inventory = std::shared_ptr<GTAInventory>(new GTAInventory());
+	auto vehicle = std::shared_ptr<GTAVehicle>(new GTAVehicle());
 	auto feelDamage = FeelDamage(instance, player);
 	auto feelRecoil = FeelRecoil(instance, inventory, {SensationOfWeapons::Pistol(),  SensationOfWeapons::SMG(), SensationOfWeapons::Heavy(), SensationOfWeapons::MiniGun(), SensationOfWeapons::Shotgun()});
-
+	auto feelDriving = FeelDriving(instance, vehicle, VehicleCalculator(3, 50, 10, 50, 20, 90, 10));
 	Debug::Start();
 
 	bool isDead = false;
@@ -52,34 +46,7 @@ int main() {
 			int playerPed = PLAYER::PLAYER_PED_ID();
 			feelDamage.Execute(ENTITY::GET_ENTITY_HEALTH(playerPed) + PED::GET_PED_ARMOUR(playerPed));
 			feelRecoil.Execute();
-
-			if (PED::GET_VEHICLE_PED_IS_IN(playerPed, false) != 0)
-			{
-				Vector3 speed = ENTITY::GET_ENTITY_SPEED_VECTOR(PED::GET_VEHICLE_PED_IS_IN(playerPed, FALSE), TRUE);
-				auto velocity = magnitude(speed.x, speed.y, speed.z);
-				std::string log = std::to_string(speed.x) + ", " + std::to_string(speed.y) + ", " + std::to_string(speed.z) + "\n";
-				//Debug::Log((char*)log.c_str());
-
-				if (velocity > 3) 
-				{
-					MusclesGroup left = MusclesGroup({ Muscle::Arm_L(), Muscle::Pectoral_L(), Muscle::Abdominal_L() });
-					MusclesGroup right = MusclesGroup({Muscle::Arm_R(), Muscle::Pectoral_R(), Muscle::Abdominal_R()});
-
-					if (speed.x > 1.5)
-						left = left.WithIntensity(50);
-					else if (speed.x < -1.5)
-						right = right.WithIntensity(50);
-
-					auto tesda = ((velocity / 50) * 100);
-					if (tesda > 20) tesda = 20;
-
-					Debug::Log((char*)std::to_string(tesda).c_str());
-
-					auto sensation = OWOGame::SensationsFactory::Create(60, .2f, tesda)->WithMuscles(JoinMuscles(left, right));
-
-					instance->Send(movePtr(sensation));
-				}
-			}
+			feelDriving.Execute();
 
 			if (PLAYER::IS_PLAYER_DEAD(PLAYER::GET_PLAYER_INDEX()) && !isDead)
 			{
