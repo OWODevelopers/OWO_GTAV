@@ -1,6 +1,6 @@
 #pragma once
 
-class Vehicle {
+class OWOVehicle {
 
 public:
 	virtual int Velocity() = 0;

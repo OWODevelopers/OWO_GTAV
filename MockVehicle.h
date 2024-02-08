@@ -1,7 +1,7 @@
 #pragma once
-#include "Vehicle.h"
+#include "OWOVehicle.h"
 
-class MockVehicle : public Vehicle
+class MockVehicle : public OWOVehicle
 {
 private:
 	int velocity = 0;
