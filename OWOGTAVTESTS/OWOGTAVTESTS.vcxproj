@@ -159,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FeelDrivingTests.cpp" />
     <ClCompile Include="HapticDevice.cpp" />
     <ClCompile Include="MockBody.cpp" />
     <ClCompile Include="MockInventory.cpp" />
