@@ -26,6 +26,6 @@
     <ClInclude Include="GTAInventory.h" />
     <ClInclude Include="FeelDriving.h" />
     <ClInclude Include="Vehicle.h" />
-    <ClInclude Include="VehicleEngine.h" />
+    <ClInclude Include="IntensityLerp.h" />
   </ItemGroup>
 </Project>

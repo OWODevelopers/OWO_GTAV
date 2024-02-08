@@ -36,7 +36,7 @@
     <ClInclude Include="script.h" />
     <ClInclude Include="FeelDamage.h" />
     <ClInclude Include="Vehicle.h" />
-    <ClInclude Include="VehicleEngine.h" />
+    <ClInclude Include="IntensityLerp.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="OWOAPI\OWOAPI.vcxproj">
