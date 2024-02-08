@@ -2,7 +2,7 @@
 #include "HapticDevice.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
 #include "MockBody.h"
-#include "../FeelDamage.h"
+#include "../FeelDriving.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,9 +12,14 @@ namespace OWOGTAVTESTS
 	{
 	public:
 
-		TEST_METHOD(FeelDamage_WhenHealthIs_BelowPreviousHealth)
+		TEST_METHOD(Fell_velocity_whiledriving)
 		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			auto sut = FeelDriving(mock);
 
+			sut.Execute();
+
+			Assert::IsFalse(mock->DidFeelAnything());
 		}
 	};
 }
