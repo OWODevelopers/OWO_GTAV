@@ -1,16 +1,13 @@
 #include "FeelDriving.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
 
-int FeelDriving::ImpactIntensity()
-{
-	return OWOGame::Math::Clamp(lastVelocity - vehicle->Velocity(), 0, 90);
-}
+
 
 void FeelDriving::Execute()
 {
-	if (ImpactIntensity() > 20) 
+	if (engine.ImpactIntensity(lastVelocity, vehicle->Velocity()) > 20) 
 	{
-		device->Send(OWOGame::SensationsFactory::Create(100, .1f, ImpactIntensity())->WithMuscles(OWOGame::MusclesGroup::All()));
+		device->Send(OWOGame::SensationsFactory::Create(100, .1f, engine.ImpactIntensity(lastVelocity, vehicle->Velocity()))->WithMuscles(OWOGame::MusclesGroup::All()));
 		lastVelocity = vehicle->Velocity();
 		return;
 	}

@@ -14,11 +14,11 @@ namespace OWOGTAVTESTS
 	{
 	public:
 
-		FeelDriving CreateSut(sharedPtr<MockDevice> device = nullptr, sharedPtr<MockVehicle> vehicle = nullptr, sharedPtr <VehicleEngine> engine = nullptr)
+		FeelDriving CreateSut(sharedPtr<MockDevice> device = nullptr, sharedPtr<MockVehicle> vehicle = nullptr, sharedPtr <VehicleCalculator> engine = nullptr)
 		{
 			sharedPtr<MockDevice> finalDevice = device == nullptr ? CreateNewUnique(MockDevice, MockDevice()) : device;
 			sharedPtr<MockVehicle> doc = vehicle == nullptr ? CreateNewUnique(MockVehicle, MockVehicle()) : vehicle;
-			auto finalEngine = engine == nullptr ? VehicleEngine(0, 100, 0, 40) : *engine;
+			auto finalEngine = engine == nullptr ? VehicleCalculator(0, 100, 0, 40, 0, 90) : *engine;
 
 			return FeelDriving(finalDevice, doc, finalEngine);
 		}
