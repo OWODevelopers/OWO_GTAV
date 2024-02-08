@@ -4,6 +4,7 @@
 #include "MockBody.h"
 #include "../FeelDriving.h"
 #include "../MockVehicle.h"
+#include "../VehicleEngine.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -17,7 +18,9 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-			auto sut = FeelDriving(mock, doc);
+			auto engine = VehicleEngine(0, 100, 0, 40);
+
+			auto sut = FeelDriving(mock, doc, engine);
 
 			sut.Execute();
 
@@ -28,13 +31,29 @@ namespace OWOGTAVTESTS
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-			auto sut = FeelDriving(mock, doc);
+			auto engine = VehicleEngine(0, 100, 0, 40);
+
+			auto sut = FeelDriving(mock, doc, engine);
 
 			doc->DriveAt(100);
 
 			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelAnything());
+		}
+
+		TEST_METHOD(Feel_MaxVelocity_Intensity)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+
+			auto engine = VehicleEngine(0, 100, 0, 40);
+			auto sut = FeelDriving(mock, doc, engine);
+
+			doc->DriveAt(100);
+			sut.Execute();
+
+			Assert::AreEqual(40, mock->IntensityOfLastFelt());
 		}
 	};
 }

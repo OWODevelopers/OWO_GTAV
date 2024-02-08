@@ -5,5 +5,6 @@ void FeelDriving::Execute()
 {
 	if (vehicle->Velocity() <= 0)return;
 
-	device->Send(OWOGame::SensationsFactory::Create());
+
+	device->Send(OWOGame::SensationsFactory::Create(100, .1f, engine.IntensityAt(vehicle->Velocity())));
 }

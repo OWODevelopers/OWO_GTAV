@@ -1,4 +1,5 @@
 #include "HapticDevice.h"
+#include "../OWOAPI/Domain/String.h"
 
 bool MockDevice::HasMuscles()
 {
@@ -13,7 +14,7 @@ void MockDevice::Configure(sharedPtr<GameAuth> auth)
 void MockDevice::Send(uniquePtr<OWOGame::Sensation> sensation)
 {
 	WhatFelt = movePtr(sensation);
-	if(HasMuscles())
+	if (HasMuscles())
 		WhereFelt = dynamic_cast<SensationWithMuscles*>(WhatFelt.get())->muscles;
 }
 
@@ -62,7 +63,7 @@ bool MockDevice::DidFeelIn(Muscle aMuscle)
 {
 	for (Muscle muscle : (owoVector<Muscle>)WhereFelt)
 	{
-		if (muscle.ToString() == aMuscle.ToString()) 
+		if (muscle.ToString() == aMuscle.ToString())
 			return true;
 	}
 
@@ -80,4 +81,9 @@ bool MockDevice::DidFeelWithoutMuscles(uniquePtr<Sensation> sensation)
 bool MockDevice::DidFeelAnything()
 {
 	return WhatFelt != nullptr;
+}
+
+int MockDevice::IntensityOfLastFelt()
+{
+	return std::stoi(OWOGame::String::Split(WhatFelt->ToString(), ',')[2]);
 }

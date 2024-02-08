@@ -29,4 +29,5 @@ public:
     bool DidFeelIn(Muscle muscle);
     bool DidFeelWithoutMuscles(uniquePtr<Sensation> sensation);
     bool DidFeelAnything();
+    int IntensityOfLastFelt();
 };

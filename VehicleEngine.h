@@ -4,10 +4,16 @@ struct VehicleEngine {
 
 	double minVelocity = 0;
 	double maxVelocity = 100;
-	double minIntensity = 0;
-	double maxIntensity = 0;
+	int minIntensity = 0;
+	int maxIntensity = 0;
 
-	VehicleEngine(double minVelocity, double maxVelocity, double minIntensity, double maxIntensity)
+	VehicleEngine(double minVelocity, double maxVelocity, int minIntensity, int maxIntensity)
 		: minVelocity(minVelocity), maxVelocity(maxVelocity), minIntensity(minIntensity), maxIntensity(maxIntensity) {}
 
+
+	int IntensityAt(double velocity) 
+	{
+		return maxIntensity;
+		//OWOGame::Math::Clamp(velocity, minIntensity, maxIntensity)
+	}
 };
