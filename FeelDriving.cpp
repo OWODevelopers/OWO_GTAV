@@ -1,23 +1,32 @@
 #include "FeelDriving.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
 
-int FeelDriving::ImpactIntensity()
-{
-	return OWOGame::Math::Clamp(lastVelocity - vehicle->Velocity(), 0, 90);
-}
-
 void FeelDriving::Execute()
 {
-	if (forImpacts.IntensityAt(lastVelocity - vehicle->Velocity()) > 0)
+	if (DidImpact())
 	{
-		device->Send(OWOGame::SensationsFactory::Create(100, .1f, forImpacts.IntensityAt(lastVelocity - vehicle->Velocity()))->WithMuscles(OWOGame::MusclesGroup::All()));
+		device->Send(OWOGame::SensationsFactory::Create(100, .1f, ImpactIntensity())->WithMuscles(OWOGame::MusclesGroup::All()));
 		lastVelocity = vehicle->Velocity();
 		return;
 	}
 
 	if (vehicle->Velocity() <= 0) return;
 
-	auto whereFeels = vehicle->DrivingForward() ? OWOGame::MusclesGroup::Back() : OWOGame::MusclesGroup::Front();
-	device->Send(OWOGame::SensationsFactory::Create(100, .1f, engine.IntensityAt(vehicle->Velocity()))->WithMuscles(whereFeels));
+	device->Send(OWOGame::SensationsFactory::Create(100, .1f, engine.IntensityAt(vehicle->Velocity()))->WithMuscles(SteeringMuscles()));
 	lastVelocity = vehicle->Velocity();
+}
+
+bool FeelDriving::DidImpact()
+{
+	return ImpactIntensity() > 0;
+}
+
+OWOGame::MusclesGroup FeelDriving::SteeringMuscles()
+{
+	return vehicle->DrivingForward() ? OWOGame::MusclesGroup::Back() : OWOGame::MusclesGroup::Front();
+}
+
+int FeelDriving::ImpactIntensity()
+{
+	return forImpacts.IntensityAt(lastVelocity - vehicle->Velocity());
 }
