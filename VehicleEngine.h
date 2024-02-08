@@ -8,10 +8,11 @@ struct VehicleCalculator {
 	int maxIntensity = 0;
 	double minImpact = 0;
 	double maxImpact = 100;
+	int minimumImpactForce = 20;
 
-	VehicleCalculator(double minVelocity, double maxVelocity, int minIntensity, int maxIntensity, double minImpact, double maxImpact)
+	VehicleCalculator(double minVelocity = 0, double maxVelocity = 100, int minIntensity = 0, int maxIntensity = 100, double minImpact = 0, double maxImpact = 100, int minimumImpactForce = 20)
 		: minVelocity(minVelocity), maxVelocity(maxVelocity), minIntensity(minIntensity), maxIntensity(maxIntensity),
-			minImpact(minImpact), maxImpact(maxImpact){}
+			minImpact(minImpact), maxImpact(maxImpact), minimumImpactForce(minimumImpactForce){}
 
 	float lerp(float a, float b, float f)
 	{
@@ -33,5 +34,9 @@ struct VehicleCalculator {
 	int ImpactIntensity(double lastVelocity, double newVelocity)
 	{
 		return OWOGame::Math::Clamp(lastVelocity - newVelocity, minImpact, maxImpact);
+	}
+
+	bool ImpactStrongEnough(double lastVelocity, double newVelocity) {
+		return ImpactIntensity(lastVelocity, newVelocity) > minimumImpactForce;
 	}
 };
