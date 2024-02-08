@@ -40,5 +40,15 @@ namespace OWOGTAVTESTS
 			Assert::IsFalse(VehicleCalculator(10, 100, 0, 80, 0, 90, 20).ImpactStrongEnough(10, 0));
 			Assert::IsTrue(VehicleCalculator(10, 100, 0, 80, 0, 90, 20).ImpactStrongEnough(100, 50));
 		}
+
+		TEST_METHOD(Limit_MaxImpactIntensity)
+		{
+			Assert::AreEqual(90, VehicleCalculator(10, 100, 0, 80, 0, 90, 20).ImpactIntensity(100, 0));
+		}
+
+		TEST_METHOD(Feel_MinImpactIntensity)
+		{
+			Assert::AreEqual(10, VehicleCalculator(10, 100, 0, 80, 10, 90, 20).ImpactIntensity(20, 0));
+		}
 	};
 }

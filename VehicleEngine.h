@@ -33,7 +33,10 @@ struct VehicleCalculator {
 
 	int ImpactIntensity(double lastVelocity, double newVelocity)
 	{
-		return OWOGame::Math::Clamp(lastVelocity - newVelocity, minImpact, maxImpact);
+		auto brakeForce = lastVelocity - newVelocity;
+
+
+		return OWOGame::Math::Clamp(lastVelocity, minImpact, maxImpact);
 	}
 
 	bool ImpactStrongEnough(double lastVelocity, double newVelocity) {
