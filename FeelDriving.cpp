@@ -3,6 +3,8 @@
 
 void FeelDriving::Execute()
 {
+	if (!vehicle->IsDriving()) return;
+
 	if (!CanFeelDriving()) return;
 
 	device->Send(DrivingSensation());

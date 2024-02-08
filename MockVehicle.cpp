@@ -10,6 +10,11 @@ void MockVehicle::DriveBackwards()
 	drivingForward = false;
 }
 
+void MockVehicle::ExitTheCar()
+{
+	isDriving = false;
+}
+
 int MockVehicle::Velocity()
 {
 	return velocity;
@@ -18,4 +23,9 @@ int MockVehicle::Velocity()
 bool MockVehicle::DrivingForward()
 {
 	return drivingForward;
+}
+
+bool MockVehicle::IsDriving()
+{
+	return isDriving;
 }
