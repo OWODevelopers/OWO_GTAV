@@ -13,7 +13,7 @@ namespace OWOGTAVTESTS
 	{
 	public:
 
-		TEST_METHOD(Fell_velocity_whiledriving)
+		TEST_METHOD(FeelNothing_WheNotDriving)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
