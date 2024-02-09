@@ -23,13 +23,15 @@ namespace OWOGTAVTESTS
 			return FeelDriving(finalDevice, doc, finalEngine, IntensityLerp(10, 60, 40, 90));
 		}
 
-		int IntensityWhenSteering(int steer, Muscle whereToCheckIntensity)
+		int IntensityWhenSteering(int steer, Muscle whereToCheckIntensity, bool movingForward = true)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
 			auto sut = CreateSut(mock, doc);
 
 			doc->DriveAt(80);
+			if (!movingForward) doc->DriveBackwards();
+			
 			doc->TurnRight(steer);
 			sut.Execute();
 
@@ -218,16 +220,22 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->IntensityOf(OWOGame::Muscle::Arm_R()) > 50);
 		}
 
-		TEST_METHOD(IncreaseIntensity_OfSteeringMuscles) 
+		TEST_METHOD(IncreaseIntensity_OfSteeringMuscles_MovingForward) 
 		{
 			Assert::IsTrue(IntensityWhenSteering(20, Muscle::Dorsal_R()) > IntensityWhenSteering(0, Muscle::Dorsal_R()));
 			Assert::IsTrue(IntensityWhenSteering(-20, Muscle::Dorsal_L()) > IntensityWhenSteering(0, Muscle::Dorsal_L()));
 		}
 
-		TEST_METHOD(DecreaseIntensity_OfOppositeSteeringMuscles)
+		TEST_METHOD(DecreaseIntensity_OfOppositeSteeringMuscles_MovingForward)
 		{
 			Assert::IsTrue(IntensityWhenSteering(-20, Muscle::Dorsal_R()) < IntensityWhenSteering(0, Muscle::Dorsal_R()));
 			Assert::IsTrue(IntensityWhenSteering(20, Muscle::Dorsal_L()) < IntensityWhenSteering(0, Muscle::Dorsal_L()));
+		}
+
+		TEST_METHOD(DecreaseIntensity_OfOppositeSteeringMuscles_MovingBackwards)
+		{
+			Assert::IsTrue(IntensityWhenSteering(-20, Muscle::Abdominal_R(), false) < IntensityWhenSteering(0, Muscle::Abdominal_R(), false));
+			Assert::IsTrue(IntensityWhenSteering(20, Muscle::Abdominal_L(), false) < IntensityWhenSteering(0, Muscle::Abdominal_L(), false));
 		}
 
 		TEST_METHOD(Muscles_Sum) {

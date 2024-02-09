@@ -29,13 +29,7 @@ OWOGame::MusclesGroup FeelDriving::SteeringMuscles()
 		OWOGame::MusclesGroup::Back().WithIntensity(engine.IntensityAt(vehicle->Velocity()))
 		: OWOGame::MusclesGroup::Front().WithIntensity(engine.IntensityAt(vehicle->Velocity()));
 
-	if (vehicle->SteeringAmount() > 0)
-		return muscles + Right_Back().WithIntensity(60) - Left_Back().WithIntensity(60);
-
-	if (vehicle->SteeringAmount() < 0)
-		return muscles + Left_Back().WithIntensity(50) - Right_Back().WithIntensity(60);
-
-	return muscles;
+	return muscles + TurningTowardsMuscles().WithIntensity(60) - TurningAgainstMuscles().WithIntensity(60);
 }
 
 bool FeelDriving::CanFeelDriving()
@@ -56,12 +50,36 @@ int FeelDriving::ImpactIntensity()
 	return forImpacts.IntensityAt(lastVelocity - vehicle->Velocity());
 }
 
-OWOGame::MusclesGroup FeelDriving::Right_Back()
+OWOGame::MusclesGroup FeelDriving::Right()
 {
-	return  MusclesGroup({ Muscle::Dorsal_R(),Muscle::Lumbar_R(),Muscle::Arm_R() });
+	if (vehicle->DrivingForward())
+		return  MusclesGroup({ Muscle::Dorsal_R(),Muscle::Lumbar_R(),Muscle::Arm_R() });
+
+	return  MusclesGroup({ Muscle::Abdominal_R(),Muscle::Pectoral_R(),Muscle::Arm_R() });
 }
 
-OWOGame::MusclesGroup FeelDriving::Left_Back()
+OWOGame::MusclesGroup FeelDriving::Left()
 {
-	return  MusclesGroup({ Muscle::Dorsal_L(),Muscle::Lumbar_L(),Muscle::Arm_L() });
+	if (vehicle->DrivingForward())
+		return  MusclesGroup({ Muscle::Dorsal_L(),Muscle::Lumbar_L(),Muscle::Arm_L() });
+
+	return  MusclesGroup({ Muscle::Abdominal_L(),Muscle::Pectoral_L(),Muscle::Arm_L() });
+}
+
+OWOGame::MusclesGroup FeelDriving::TurningTowardsMuscles()
+{
+	if (vehicle->SteeringAmount() > 0) return Right();
+
+	if (vehicle->SteeringAmount() < 0) return Left();
+
+	return MusclesGroup({});
+}
+
+OWOGame::MusclesGroup FeelDriving::TurningAgainstMuscles()
+{
+	if (vehicle->SteeringAmount() > 0) return Left();
+
+	if (vehicle->SteeringAmount() < 0) return Right();
+
+	return MusclesGroup({});
 }
