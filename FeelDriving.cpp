@@ -25,11 +25,9 @@ bool FeelDriving::DidImpact()
 
 OWOGame::MusclesGroup FeelDriving::SteeringMuscles()
 {
-	auto muscles = vehicle->DrivingForward() ? 
-		OWOGame::MusclesGroup::Back().WithIntensity(engine.IntensityAt(vehicle->Velocity()))
-		: OWOGame::MusclesGroup::Front().WithIntensity(engine.IntensityAt(vehicle->Velocity()));
+	auto result = vehicle->DrivingForward() ? OWOGame::MusclesGroup::Back() : OWOGame::MusclesGroup::Front();
 
-	return muscles + TurningTowardsMuscles().WithIntensity(SteeringIntensity()) - TurningAgainstMuscles().WithIntensity(SteeringIntensity());
+	return result.WithIntensity(VelocityIntensity()) + TurningTowardsMuscles().WithIntensity(SteeringIntensity()) - TurningAgainstMuscles().WithIntensity(SteeringIntensity());
 }
 
 bool FeelDriving::CanFeelDriving()
@@ -53,6 +51,11 @@ int FeelDriving::ImpactIntensity()
 int FeelDriving::SteeringIntensity()
 {
 	return forSteering.IntensityAt(abs(vehicle->SteeringAmount()));
+}
+
+int FeelDriving::VelocityIntensity()
+{
+	return engine.IntensityAt(vehicle->Velocity());
 }
 
 OWOGame::MusclesGroup FeelDriving::Right()

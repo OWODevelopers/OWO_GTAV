@@ -15,6 +15,7 @@ private:
 
 	int ImpactIntensity();
 	int SteeringIntensity();
+	int VelocityIntensity();
 	bool DidImpact();
 	uniquePtr<OWOGame::Sensation> DrivingSensation();
 	bool CanFeelDriving();
