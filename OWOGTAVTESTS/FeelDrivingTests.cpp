@@ -218,14 +218,16 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->IntensityOf(OWOGame::Muscle::Arm_R()) > 50);
 		}
 
-		TEST_METHOD(asdfg1) 
+		TEST_METHOD(IncreaseIntensity_OfSteeringMuscles) 
 		{
 			Assert::IsTrue(IntensityWhenSteering(20, Muscle::Dorsal_R()) > IntensityWhenSteering(0, Muscle::Dorsal_R()));
+			Assert::IsTrue(IntensityWhenSteering(-20, Muscle::Dorsal_L()) > IntensityWhenSteering(0, Muscle::Dorsal_L()));
 		}
 
-		TEST_METHOD(asdfg1kjiftmgj)
+		TEST_METHOD(DecreaseIntensity_OfOppositeSteeringMuscles)
 		{
 			Assert::IsTrue(IntensityWhenSteering(-20, Muscle::Dorsal_R()) < IntensityWhenSteering(0, Muscle::Dorsal_R()));
+			Assert::IsTrue(IntensityWhenSteering(20, Muscle::Dorsal_L()) < IntensityWhenSteering(0, Muscle::Dorsal_L()));
 		}
 
 		TEST_METHOD(Muscles_Sum) {

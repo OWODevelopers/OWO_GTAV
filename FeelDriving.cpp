@@ -33,7 +33,7 @@ OWOGame::MusclesGroup FeelDriving::SteeringMuscles()
 		return muscles + Right_Back().WithIntensity(60) - Left_Back().WithIntensity(60);
 
 	if (vehicle->SteeringAmount() < 0)
-		return muscles + Left_Back().WithIntensity(50);
+		return muscles + Left_Back().WithIntensity(50) - Right_Back().WithIntensity(60);
 
 	return muscles;
 }
