@@ -172,6 +172,7 @@ namespace OWOGTAVTESTS
 		TEST_METHOD(apifdhdf) {
 
 			Assert::AreEqual(Muscle::Pectoral_R().WithIntensity(30).ToString(), (Muscle::Pectoral_R().WithIntensity(20) + Muscle::Pectoral_R().WithIntensity(10)).ToString());
+			Assert::AreEqual(MusclesGroup::All().ToString(), (MusclesGroup::Front() + MusclesGroup::Back()).ToString());
 		}
 	};
 }

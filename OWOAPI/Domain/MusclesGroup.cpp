@@ -1,4 +1,5 @@
 #include "MusclesGroup.h"
+#include "MusclesGroup.h"
 
 OWOGame::MusclesGroup OWOGame::MusclesGroup::WithIntensity(int intensity)
 {
@@ -45,4 +46,16 @@ OWOGame::MusclesGroup OWOGame::MusclesGroup::All()
      Muscle::Arm_R(),Muscle::Arm_L(),
      Muscle::Dorsal_R(),Muscle::Dorsal_L(),
      Muscle::Lumbar_R(),Muscle::Lumbar_L() });
+}
+
+OWOGame::MusclesGroup OWOGame::MusclesGroup::operator+(MusclesGroup addend)
+{
+    auto result = std::vector<Muscle>{muscles};
+
+    for (auto muscle : addend.muscles)
+    {
+        result.push_back(muscle); 
+    }
+
+    return result;
 }

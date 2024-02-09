@@ -21,5 +21,7 @@ namespace OWOGame
         static MusclesGroup Front();
         static MusclesGroup Back();
         static MusclesGroup All();
+
+        MusclesGroup operator+(MusclesGroup addend);
     };
 }
