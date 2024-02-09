@@ -17,6 +17,7 @@
     <ClCompile Include="GTAInventory.cpp" />
     <ClCompile Include="GTAPlayer.cpp" />
     <ClCompile Include="FeelRecoil.cpp" />
+    <ClCompile Include="GTAVehicle.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />

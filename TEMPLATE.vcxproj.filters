@@ -13,6 +13,7 @@
     <ClCompile Include="GTAInventory.cpp" />
     <ClCompile Include="FeelDriving.cpp" />
     <ClCompile Include="SensationsCollection.cpp" />
+    <ClCompile Include="GTAVehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />

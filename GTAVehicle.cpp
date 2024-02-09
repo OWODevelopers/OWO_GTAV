@@ -18,7 +18,7 @@ bool GTAVehicle::DrivingForward()
     return velocity.y > 0;
 }
 
-bool GTAVehicle::IsInVehicle()
+bool GTAVehicle::IsDriving()
 {
     return PED::GET_VEHICLE_PED_IS_IN(PLAYER::PLAYER_PED_ID(), false) != 0;
 }
