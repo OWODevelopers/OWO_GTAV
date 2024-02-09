@@ -25,3 +25,8 @@ OWOGame::Muscle OWOGame::Muscle::operator+(Muscle addend)
 {
     return Muscle(position).WithIntensity(intensity + addend.intensity);
 }
+
+OWOGame::Muscle OWOGame::Muscle::operator-(Muscle substracted)
+{
+    return Muscle(position).WithIntensity(intensity - substracted.intensity);
+}

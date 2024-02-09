@@ -2,6 +2,7 @@
 #include "MusclesGroup.h"
 #include "MusclesGroup.h"
 #include "MusclesGroup.h"
+#include "MusclesGroup.h"
 
 OWOGame::MusclesGroup OWOGame::MusclesGroup::WithIntensity(int intensity)
 {
@@ -74,6 +75,23 @@ OWOGame::MusclesGroup OWOGame::MusclesGroup::operator+(MusclesGroup addend)
         }
 
         result.push_back(muscle); 
+    }
+
+    return result;
+}
+
+OWOGame::MusclesGroup OWOGame::MusclesGroup::operator-(MusclesGroup substracted)
+{
+    auto result = std::vector<Muscle>{ muscles };
+
+    for (auto muscle : substracted.muscles)
+    {
+        if (IndexOf(muscle) != -1)
+        {
+            result[IndexOf(muscle)] = result[IndexOf(muscle)] - muscle;
+            continue;
+        }
+
     }
 
     return result;

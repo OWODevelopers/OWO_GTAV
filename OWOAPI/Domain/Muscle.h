@@ -29,5 +29,6 @@ namespace OWOGame
         static Muscle Lumbar_L();
 
         Muscle operator+(Muscle addend);
+        Muscle operator-(Muscle substracted);
     };
 }

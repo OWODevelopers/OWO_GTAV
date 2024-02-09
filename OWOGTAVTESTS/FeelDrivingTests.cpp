@@ -218,12 +218,14 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->IntensityOf(OWOGame::Muscle::Arm_R()) > 50);
 		}
 
-		TEST_METHOD(FeelMore_OnSteering) 
+		TEST_METHOD(asdfg1) 
 		{
-			auto asfasd = IntensityWhenSteering(20, Muscle::Dorsal_R());
-			auto asdfasfs = IntensityWhenSteering(0, Muscle::Dorsal_R());
+			Assert::IsTrue(IntensityWhenSteering(20, Muscle::Dorsal_R()) > IntensityWhenSteering(0, Muscle::Dorsal_R()));
+		}
 
-			Assert::IsTrue(asfasd > asdfasfs);
+		TEST_METHOD(asdfg1kjiftmgj)
+		{
+			Assert::IsTrue(IntensityWhenSteering(-20, Muscle::Dorsal_R()) < IntensityWhenSteering(0, Muscle::Dorsal_R()));
 		}
 
 		TEST_METHOD(Muscles_Sum) {
@@ -246,6 +248,30 @@ namespace OWOGTAVTESTS
 					+ MusclesGroup(
 						{
 							Muscle::Pectoral_L().WithIntensity(20)
+						})).ToString());
+		}
+
+		TEST_METHOD(Muscles_Substraction) {
+
+			Assert::AreEqual(Muscle::Pectoral_R().WithIntensity(10).ToString(), (Muscle::Pectoral_R().WithIntensity(20) - Muscle::Pectoral_R().WithIntensity(10)).ToString());
+			Assert::AreEqual(MusclesGroup::Front().ToString(), (MusclesGroup::Front() - MusclesGroup::Back()).ToString());
+			Assert::AreEqual(MusclesGroup::Front().WithIntensity(80).ToString(), (MusclesGroup::Front().WithIntensity(100) - MusclesGroup::Front().WithIntensity(20)).ToString());
+			Assert::AreEqual(MusclesGroup::Front().WithIntensity(0).ToString(), (MusclesGroup::Front().WithIntensity(30) - MusclesGroup::Front().WithIntensity(80)).ToString());
+			Assert::AreEqual(MusclesGroup(
+				{
+					Muscle::Pectoral_R().WithIntensity(50),
+					Muscle::Pectoral_L().WithIntensity(50)
+				}
+			).ToString(),
+				(
+					MusclesGroup(
+						{
+							Muscle::Pectoral_R().WithIntensity(50),
+							Muscle::Pectoral_L().WithIntensity(90)
+						})
+					- MusclesGroup(
+						{
+							Muscle::Pectoral_L().WithIntensity(40)
 						})).ToString());
 		}
 

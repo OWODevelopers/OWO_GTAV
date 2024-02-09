@@ -24,5 +24,6 @@ namespace OWOGame
         static MusclesGroup All();
 
         MusclesGroup operator+(MusclesGroup addend);
+        MusclesGroup operator-(MusclesGroup substracted);
     };
 }
