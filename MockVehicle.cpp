@@ -20,6 +20,11 @@ void MockVehicle::EnterTheVehicle()
 	isDriving = true;
 }
 
+void MockVehicle::TurnRight(int howMuch)
+{
+	steer = howMuch;
+}
+
 int MockVehicle::Velocity()
 {
 	return velocity;

@@ -99,3 +99,14 @@ int MockDevice::HowManyFelt()
 {
 	return sensationsFelt;
 }
+
+int MockDevice::IntensityOf(Muscle muscle)
+{
+	for (auto aMuscle : (std::vector<Muscle>)WhereFelt) {
+
+		if (aMuscle.ToString()[0] == muscle.ToString()[0]) 
+			return std::stoi(OWOGame::String::Split(aMuscle.ToString(), '%')[1]);
+	}
+
+	throw std::exception("No hay músculo");
+}

@@ -33,4 +33,5 @@ public:
     bool DidFeelAnything();
     int IntensityOfLastFelt();
     int HowManyFelt();
+    int IntensityOf(Muscle muscle);
 };

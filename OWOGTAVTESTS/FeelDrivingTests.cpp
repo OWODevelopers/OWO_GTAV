@@ -156,5 +156,17 @@ namespace OWOGTAVTESTS
 
 			Assert::AreEqual(1, mock->HowManyFelt());
 		}
+
+		TEST_METHOD(dfgjhfk) {
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+			auto sut = CreateSut(mock, doc);
+
+			doc->DriveAt(80);
+			doc->TurnRight(10);
+			sut.Execute();
+
+			Assert::IsTrue(mock->IntensityOf(OWOGame::Muscle::Arm_R()));
+		}
 	};
 }
