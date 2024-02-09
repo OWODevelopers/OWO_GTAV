@@ -11,6 +11,7 @@ namespace OWOGame
     private:
         owoVector<Muscle> muscles;
 
+        int IndexOf(Muscle aMuscle);
     public:
         MusclesGroup(owoVector<Muscle> muscles) : muscles(muscles) {}
 

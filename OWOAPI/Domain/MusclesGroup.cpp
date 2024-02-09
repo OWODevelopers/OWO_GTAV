@@ -48,12 +48,29 @@ OWOGame::MusclesGroup OWOGame::MusclesGroup::All()
      Muscle::Lumbar_R(),Muscle::Lumbar_L() });
 }
 
+int OWOGame::MusclesGroup::IndexOf(OWOGame::Muscle aMuscle)
+{
+    for (int i = 0; i < muscles.size(); i++)
+    {
+        if (muscles[i].ToString()[0] == aMuscle.ToString()[0])
+            return i;
+    }
+
+    return -1;
+}
+
 OWOGame::MusclesGroup OWOGame::MusclesGroup::operator+(MusclesGroup addend)
 {
     auto result = std::vector<Muscle>{muscles};
 
     for (auto muscle : addend.muscles)
     {
+        if (IndexOf(muscle) != -1)
+        {
+            result[IndexOf(muscle)] = result[IndexOf(muscle)] + muscle;
+            continue;
+        }
+
         result.push_back(muscle); 
     }
 

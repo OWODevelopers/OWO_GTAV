@@ -173,6 +173,7 @@ namespace OWOGTAVTESTS
 
 			Assert::AreEqual(Muscle::Pectoral_R().WithIntensity(30).ToString(), (Muscle::Pectoral_R().WithIntensity(20) + Muscle::Pectoral_R().WithIntensity(10)).ToString());
 			Assert::AreEqual(MusclesGroup::All().ToString(), (MusclesGroup::Front() + MusclesGroup::Back()).ToString());
+			Assert::AreEqual(MusclesGroup::Front().WithIntensity(80).ToString(), (MusclesGroup::Front().WithIntensity(30) + MusclesGroup::Front().WithIntensity(50)).ToString());
 		}
 	};
 }
