@@ -10,9 +10,11 @@ private:
 	sharedPtr<OWOVehicle> vehicle = nullptr;
 	IntensityLerp engine = IntensityLerp(0,0,0,0);
 	IntensityLerp forImpacts = IntensityLerp(10,60,40,90);
+	IntensityLerp forSteering = IntensityLerp(10,60,40,90);
 	int lastVelocity;
 
 	int ImpactIntensity();
+	int SteeringIntensity();
 	bool DidImpact();
 	uniquePtr<OWOGame::Sensation> DrivingSensation();
 	bool CanFeelDriving();
@@ -24,7 +26,7 @@ private:
 	OWOGame::MusclesGroup Right();
 	OWOGame::MusclesGroup Left();
 public:
-	FeelDriving(sharedPtr<OWOGame::OWO> device, sharedPtr<OWOVehicle> vehicle, IntensityLerp engine, IntensityLerp forImpacts)
-		: device(device), vehicle(vehicle), engine(engine), forImpacts(forImpacts) {}
+	FeelDriving(sharedPtr<OWOGame::OWO> device, sharedPtr<OWOVehicle> vehicle, IntensityLerp engine, IntensityLerp forImpacts, IntensityLerp forSteering)
+		: device(device), vehicle(vehicle), engine(engine), forImpacts(forImpacts), forSteering(forSteering) {}
 	void Execute();
 };

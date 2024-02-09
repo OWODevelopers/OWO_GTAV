@@ -20,7 +20,7 @@ namespace OWOGTAVTESTS
 			sharedPtr<MockVehicle> doc = vehicle == nullptr ? CreateNewUnique(MockVehicle, MockVehicle()) : vehicle;
 			auto finalEngine = engine == nullptr ? IntensityLerp(0, 100, 0, 40) : *engine;
 
-			return FeelDriving(finalDevice, doc, finalEngine, IntensityLerp(10, 60, 40, 90));
+			return FeelDriving(finalDevice, doc, finalEngine, IntensityLerp(10, 60, 40, 90), IntensityLerp(0, 30, 30, 60));
 		}
 
 		int IntensityWhenSteering(int steer, Muscle whereToCheckIntensity, bool movingForward = true)
@@ -206,18 +206,6 @@ namespace OWOGTAVTESTS
 
 			Assert::IsFalse(mock->DidFeelIn(OWOGame::Muscle::Arm_L()));
 			Assert::IsFalse(mock->DidFeelIn(OWOGame::Muscle::Arm_R()));
-		}
-
-		TEST_METHOD(FeelHigherInArm_WhenTurningRight) {
-			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
-			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
-			auto sut = CreateSut(mock, doc);
-
-			doc->DriveAt(80);
-			doc->TurnRight(20);
-			sut.Execute();
-
-			Assert::IsTrue(mock->IntensityOf(OWOGame::Muscle::Arm_R()) > 50);
 		}
 
 		TEST_METHOD(IncreaseIntensity_OfSteeringMuscles_MovingForward) 
