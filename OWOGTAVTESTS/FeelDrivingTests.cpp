@@ -23,6 +23,19 @@ namespace OWOGTAVTESTS
 			return FeelDriving(finalDevice, doc, finalEngine, IntensityLerp(10, 60, 40, 90));
 		}
 
+		int IntensityWhenSteering(int steer, Muscle whereToCheckIntensity)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+			auto sut = CreateSut(mock, doc);
+
+			doc->DriveAt(80);
+			doc->TurnRight(steer);
+			sut.Execute();
+
+			return mock->IntensityOf(whereToCheckIntensity);
+		}
+
 		TEST_METHOD(FeelNothing_WheNotDriving)
 		{
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
@@ -55,7 +68,7 @@ namespace OWOGTAVTESTS
 			doc->DriveAt(100);
 			sut.Execute();
 
-			Assert::AreEqual(40, mock->IntensityOfLastFelt());
+			Assert::AreEqual(40, mock->IntensityOf(Muscle::Dorsal_L()));
 		}
 
 		TEST_METHOD(FeelVelocity_At_BackMuscles)
@@ -181,7 +194,7 @@ namespace OWOGTAVTESTS
 			Assert::IsTrue(mock->DidFeelIn(OWOGame::Muscle::Arm_L()));
 		}
 
-		TEST_METHOD(fdgsdgfs) {
+		TEST_METHOD(DontFeel_Arms_GoingStraight) {
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
 			auto sut = CreateSut(mock, doc);
@@ -193,6 +206,26 @@ namespace OWOGTAVTESTS
 			Assert::IsFalse(mock->DidFeelIn(OWOGame::Muscle::Arm_R()));
 		}
 
+		TEST_METHOD(FeelHigherInArm_WhenTurningRight) {
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+			auto sut = CreateSut(mock, doc);
+
+			doc->DriveAt(80);
+			doc->TurnRight(20);
+			sut.Execute();
+
+			Assert::IsTrue(mock->IntensityOf(OWOGame::Muscle::Arm_R()) > 50);
+		}
+
+		TEST_METHOD(FeelMore_OnSteering) 
+		{
+			auto asfasd = IntensityWhenSteering(20, Muscle::Dorsal_R());
+			auto asdfasfs = IntensityWhenSteering(0, Muscle::Dorsal_R());
+
+			Assert::IsTrue(asfasd > asdfasfs);
+		}
+
 		TEST_METHOD(Muscles_Sum) {
 
 			Assert::AreEqual(Muscle::Pectoral_R().WithIntensity(30).ToString(), (Muscle::Pectoral_R().WithIntensity(20) + Muscle::Pectoral_R().WithIntensity(10)).ToString());
@@ -200,20 +233,21 @@ namespace OWOGTAVTESTS
 			Assert::AreEqual(MusclesGroup::Front().WithIntensity(80).ToString(), (MusclesGroup::Front().WithIntensity(30) + MusclesGroup::Front().WithIntensity(50)).ToString());
 			Assert::AreEqual(MusclesGroup(
 				{
-					Muscle::Pectoral_R().WithIntensity(50), 
+					Muscle::Pectoral_R().WithIntensity(50),
 					Muscle::Pectoral_L().WithIntensity(30)
 				}
-			).ToString(), 
+			).ToString(),
 				(
 					MusclesGroup(
-						{ 
-							Muscle::Pectoral_R().WithIntensity(50), 
-							Muscle::Pectoral_L().WithIntensity(10) 
-						}) 
+						{
+							Muscle::Pectoral_R().WithIntensity(50),
+							Muscle::Pectoral_L().WithIntensity(10)
+						})
 					+ MusclesGroup(
-						{ 
-							Muscle::Pectoral_L().WithIntensity(20) 
+						{
+							Muscle::Pectoral_L().WithIntensity(20)
 						})).ToString());
 		}
+
 	};
 }

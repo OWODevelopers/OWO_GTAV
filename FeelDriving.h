@@ -17,6 +17,8 @@ private:
 	OWOGame::MusclesGroup SteeringMuscles();
 	uniquePtr<OWOGame::Sensation> DrivingSensation();
 	bool CanFeelDriving();
+	OWOGame::MusclesGroup Right_Back();
+	OWOGame::MusclesGroup Left_Back();
 public:
 	FeelDriving(sharedPtr<OWOGame::OWO> device, sharedPtr<OWOVehicle> vehicle, IntensityLerp engine, IntensityLerp forImpacts)
 		: device(device), vehicle(vehicle), engine(engine), forImpacts(forImpacts) {}

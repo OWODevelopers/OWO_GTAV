@@ -84,7 +84,7 @@ namespace OWOGTAVTESTS
 			sut.Execute(100);
 			sut.Execute(50);
 
-			Assert::IsFalse(mock->DidFeelIn(Muscle::Abdominal_R().WithIntensity(20)));
+			Assert::IsFalse(mock->IntensityOf(Muscle::Abdominal_R()) == 20);
 		}
 
 		TEST_METHOD(FeelBasedOn_DamageType)

@@ -1,5 +1,7 @@
 #include "MusclesGroup.h"
 #include "MusclesGroup.h"
+#include "MusclesGroup.h"
+#include "MusclesGroup.h"
 
 OWOGame::MusclesGroup OWOGame::MusclesGroup::WithIntensity(int intensity)
 {

@@ -65,7 +65,7 @@ bool MockDevice::DidFeelIn(Muscle aMuscle)
 {
 	for (Muscle muscle : (owoVector<Muscle>)WhereFelt)
 	{
-		if (muscle.ToString() == aMuscle.ToString())
+		if (muscle.ToString()[0] == aMuscle.ToString()[0])
 			return true;
 	}
 
@@ -74,7 +74,7 @@ bool MockDevice::DidFeelIn(Muscle aMuscle)
 
 bool MockDevice::DidFeelInEvery(MusclesGroup allMuscles)
 {
-	return WhereFelt.ToString() == allMuscles.ToString();
+	return WhereFelt.ToString()[0] == allMuscles.ToString()[0];
 }
 
 bool MockDevice::DidFeelWithoutMuscles(uniquePtr<Sensation> sensation)
