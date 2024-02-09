@@ -167,6 +167,7 @@
     <ClCompile Include="MockBody.cpp" />
     <ClCompile Include="MockInventory.cpp" />
     <ClCompile Include="FeeldDamageTests.cpp" />
+    <ClCompile Include="OWOAssert.h" />
     <ClCompile Include="RecoilTests.cpp" />
     <ClCompile Include="VehicleEngineTests.cpp" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 #include "Muscle.h"
 #include "Muscle.h"
+#include "Muscle.h"
 
 owoString OWOGame::Muscle::ToString()
 {
@@ -29,4 +30,9 @@ OWOGame::Muscle OWOGame::Muscle::operator+(Muscle addend)
 OWOGame::Muscle OWOGame::Muscle::operator-(Muscle substracted)
 {
     return Muscle(position).WithIntensity(intensity - substracted.intensity);
+}
+
+bool OWOGame::Muscle::operator==(const Muscle &other)
+{
+    return position == other.position;
 }

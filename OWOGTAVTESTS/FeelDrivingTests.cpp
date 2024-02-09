@@ -5,6 +5,7 @@
 #include "FeelDriving.h"
 #include "MockVehicle.h"
 #include "IntensityLerp.h"
+#include "OWOAssert.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -273,5 +274,9 @@ namespace OWOGTAVTESTS
 						})).ToString());
 		}
 
+		TEST_METHOD(Muscles_Equality) 
+		{
+			OWOGame::OWOAssert::AreEqual(Muscle::Pectoral_R(), Muscle::Pectoral_R());
+		}
 	};
 }

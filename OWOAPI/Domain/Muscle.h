@@ -30,5 +30,6 @@ namespace OWOGame
 
         Muscle operator+(Muscle addend);
         Muscle operator-(Muscle substracted);
+        bool operator==(const Muscle &other);
     };
 }
