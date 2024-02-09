@@ -24,8 +24,10 @@ bool FeelDriving::DidImpact()
 OWOGame::MusclesGroup FeelDriving::SteeringMuscles()
 {
 	auto muscles = vehicle->DrivingForward() ? OWOGame::MusclesGroup::Back() : OWOGame::MusclesGroup::Front();
-	std::vector<OWOGame::Muscle> result = {};
 
+	if(vehicle->SteeringAmount() > 0)
+		return muscles + OWOGame::MusclesGroup({OWOGame::Muscle::Arm_R()});
+	
 	return muscles;
 }	
 

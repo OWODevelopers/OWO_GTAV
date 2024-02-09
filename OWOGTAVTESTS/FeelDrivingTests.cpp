@@ -166,10 +166,10 @@ namespace OWOGTAVTESTS
 			doc->TurnRight(10);
 			sut.Execute();
 
-			Assert::IsTrue(mock->IntensityOf(OWOGame::Muscle::Arm_R()));
+			Assert::IsTrue(mock->DidFeelIn(OWOGame::Muscle::Arm_R()));
 		}
 
-		TEST_METHOD(apifdhdf) {
+		TEST_METHOD(Muscles_Sum) {
 
 			Assert::AreEqual(Muscle::Pectoral_R().WithIntensity(30).ToString(), (Muscle::Pectoral_R().WithIntensity(20) + Muscle::Pectoral_R().WithIntensity(10)).ToString());
 			Assert::AreEqual(MusclesGroup::All().ToString(), (MusclesGroup::Front() + MusclesGroup::Back()).ToString());
