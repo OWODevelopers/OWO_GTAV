@@ -25,8 +25,11 @@ OWOGame::MusclesGroup FeelDriving::SteeringMuscles()
 {
 	auto muscles = vehicle->DrivingForward() ? OWOGame::MusclesGroup::Back() : OWOGame::MusclesGroup::Front();
 
-	if(vehicle->SteeringAmount() > 0)
+	if (vehicle->SteeringAmount() > 0)
 		return muscles + OWOGame::MusclesGroup({OWOGame::Muscle::Arm_R()});
+
+	if (vehicle->SteeringAmount() < 0)
+		return muscles + OWOGame::MusclesGroup({ OWOGame::Muscle::Arm_L()});
 	
 	return muscles;
 }	

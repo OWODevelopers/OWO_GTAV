@@ -157,7 +157,7 @@ namespace OWOGTAVTESTS
 			Assert::AreEqual(1, mock->HowManyFelt());
 		}
 
-		TEST_METHOD(dfgjhfk) {
+		TEST_METHOD(Feel_RightArm_OnSteeringRight) {
 			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
 			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
 			auto sut = CreateSut(mock, doc);
@@ -167,6 +167,18 @@ namespace OWOGTAVTESTS
 			sut.Execute();
 
 			Assert::IsTrue(mock->DidFeelIn(OWOGame::Muscle::Arm_R()));
+		}
+
+		TEST_METHOD(Feel_LeftArm_OnSteeringLeft) {
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+			auto sut = CreateSut(mock, doc);
+
+			doc->DriveAt(80);
+			doc->TurnLeft(10);
+			sut.Execute();
+
+			Assert::IsTrue(mock->DidFeelIn(OWOGame::Muscle::Arm_L()));
 		}
 
 		TEST_METHOD(Muscles_Sum) {

@@ -15,6 +15,8 @@ public:
 	void ExitTheVehicle();
 	void EnterTheVehicle();
 	void TurnRight(int howMuch);
+	void TurnLeft(int howMuch);
+
 
 	int Velocity() override;
 	bool DrivingForward() override;
