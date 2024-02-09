@@ -12,7 +12,7 @@ namespace OWOGTAVTESTS
 {
 	TEST_CLASS(IntensityLerpTests)
 	{
-	public:
+	public: 
 
 		TEST_METHOD(DontFeel_Below_MinVelocity)
 		{

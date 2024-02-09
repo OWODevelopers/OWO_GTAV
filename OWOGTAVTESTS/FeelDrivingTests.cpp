@@ -3,6 +3,7 @@
 #include "../OWOAPI/Domain/SensationsFactory.h"
 #include "MockBody.h"
 #include "FeelDriving.h"
+#include "FeelDamage.h"
 #include "MockVehicle.h"
 #include "IntensityLerp.h"
 #include "OWOAssert.h"
@@ -207,6 +208,32 @@ namespace OWOGTAVTESTS
 
 			Assert::IsFalse(mock->DidFeelIn(OWOGame::Muscle::Arm_L()));
 			Assert::IsFalse(mock->DidFeelIn(OWOGame::Muscle::Arm_R()));
+		}
+
+		TEST_METHOD(AssignCorrectPriority_ToDriving) 
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+			auto sut = CreateSut(mock, doc);
+
+			doc->DriveAt(80);
+			sut.Execute();
+
+			Assert::AreEqual(FeelDriving::Priority, mock->WhatFelt->GetPriority());
+		}
+
+		TEST_METHOD(ghfde)
+		{
+			sharedPtr<MockDevice> mock = CreateNewUnique(MockDevice, MockDevice());
+			sharedPtr<MockVehicle> doc = CreateNewUnique(MockVehicle, MockVehicle());
+			auto sut = CreateSut(mock, doc);
+
+			doc->DriveAt(80);
+			sut.Execute();
+			doc->DriveAt(10);
+			sut.Execute();
+
+			Assert::AreEqual(FeelDamage::Priority, mock->WhatFelt->GetPriority());
 		}
 
 		TEST_METHOD(IncreaseIntensity_OfSteeringMuscles_MovingForward) 

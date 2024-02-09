@@ -15,9 +15,13 @@ private:
 
 	int ImpactIntensity();
 	int SteeringIntensity();
+	int VelocityIntensity();
 	bool DidImpact();
-	uniquePtr<OWOGame::Sensation> DrivingSensation();
 	bool CanFeelDriving();
+
+	uniquePtr<OWOGame::Sensation> Sensation();
+	uniquePtr<OWOGame::Sensation> DrivingSensation();
+	uniquePtr<OWOGame::Sensation> ImpactSensation();
 
 	OWOGame::MusclesGroup SteeringMuscles();
 	OWOGame::MusclesGroup TurningTowardsMuscles();
@@ -28,5 +32,7 @@ private:
 public:
 	FeelDriving(sharedPtr<OWOGame::OWO> device, sharedPtr<OWOVehicle> vehicle, IntensityLerp engine, IntensityLerp forImpacts, IntensityLerp forSteering)
 		: device(device), vehicle(vehicle), engine(engine), forImpacts(forImpacts), forSteering(forSteering) {}
+
+	static const int Priority = 2;
 	void Execute();
 };

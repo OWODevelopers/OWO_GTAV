@@ -1,5 +1,6 @@
 #include "FeelDriving.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
+#include "FeelDamage.h"
 #include "Debug.h"
 
 using namespace OWOGame;
@@ -14,7 +15,7 @@ void FeelDriving::Execute()
 
 	if (!CanFeelDriving()) return;
 
-	device->Send(DrivingSensation());
+	device->Send(Sensation());
 	lastVelocity = vehicle->Velocity();
 }
 
@@ -25,11 +26,9 @@ bool FeelDriving::DidImpact()
 
 OWOGame::MusclesGroup FeelDriving::SteeringMuscles()
 {
-	auto muscles = vehicle->DrivingForward() ? 
-		OWOGame::MusclesGroup::Back().WithIntensity(engine.IntensityAt(vehicle->Velocity()))
-		: OWOGame::MusclesGroup::Front().WithIntensity(engine.IntensityAt(vehicle->Velocity()));
+	auto result = vehicle->DrivingForward() ? OWOGame::MusclesGroup::Back() : OWOGame::MusclesGroup::Front();
 
-	return muscles + TurningTowardsMuscles().WithIntensity(SteeringIntensity()) - TurningAgainstMuscles().WithIntensity(SteeringIntensity());
+	return result.WithIntensity(VelocityIntensity()) + TurningTowardsMuscles().WithIntensity(SteeringIntensity()) - TurningAgainstMuscles().WithIntensity(SteeringIntensity());
 }
 
 bool FeelDriving::CanFeelDriving()
@@ -37,12 +36,26 @@ bool FeelDriving::CanFeelDriving()
 	return DidImpact() || vehicle->Velocity() > 0;
 }
 
-uniquePtr<OWOGame::Sensation> FeelDriving::DrivingSensation()
+uniquePtr<OWOGame::Sensation> FeelDriving::Sensation()
 {
 	if (DidImpact())
-		return OWOGame::SensationsFactory::Create(100, .1f, ImpactIntensity())->WithMuscles(OWOGame::MusclesGroup::All());
+		return ImpactSensation();
 
-	return OWOGame::SensationsFactory::Create(100, .1f)->WithMuscles(SteeringMuscles());
+	return DrivingSensation();
+}
+
+uniquePtr<OWOGame::Sensation> FeelDriving::DrivingSensation()
+{
+	auto result = OWOGame::SensationsFactory::Create(100, .1f)->WithMuscles(SteeringMuscles());
+	result->SetPriority(Priority);
+	return result;
+}
+
+uniquePtr<OWOGame::Sensation> FeelDriving::ImpactSensation()
+{
+	auto result = OWOGame::SensationsFactory::Create(100, .1f, ImpactIntensity())->WithMuscles(OWOGame::MusclesGroup::All());
+	result->SetPriority(FeelDamage::Priority);
+	return result;
 }
 
 int FeelDriving::ImpactIntensity()
@@ -53,6 +66,11 @@ int FeelDriving::ImpactIntensity()
 int FeelDriving::SteeringIntensity()
 {
 	return forSteering.IntensityAt(abs(vehicle->SteeringAmount()));
+}
+
+int FeelDriving::VelocityIntensity()
+{
+	return engine.IntensityAt(vehicle->Velocity());
 }
 
 OWOGame::MusclesGroup FeelDriving::Right()
