@@ -1,5 +1,6 @@
 #include "FeelDriving.h"
 #include "../OWOAPI/Domain/SensationsFactory.h"
+#include "FeelDamage.h"
 #include "Debug.h"
 
 using namespace OWOGame;
@@ -52,7 +53,9 @@ uniquePtr<OWOGame::Sensation> FeelDriving::DrivingSensation()
 
 uniquePtr<OWOGame::Sensation> FeelDriving::ImpactSensation()
 {
-	return OWOGame::SensationsFactory::Create(100, .1f, ImpactIntensity())->WithMuscles(OWOGame::MusclesGroup::All());
+	auto result = OWOGame::SensationsFactory::Create(100, .1f, ImpactIntensity())->WithMuscles(OWOGame::MusclesGroup::All());
+	result->SetPriority(FeelDamage::Priority);
+	return result;
 }
 
 int FeelDriving::ImpactIntensity()
