@@ -1,4 +1,5 @@
 #include "FeelRecoil.h"
+#include "Debug.h"
 #include "OWOAPI/Domain/SensationsFactory.h"
 #include "OWOAPI/Domain/Muscle.h"
 
@@ -51,8 +52,12 @@ void FeelRecoil::Execute()
 		return;
 	}
 
-	if (DidShoot())
+	if (DidShoot()) {
+
 		SendRecoilSensation();
+		Debug::LogString(std::to_string((unsigned long)inventory->CurrentWeapon()));
+	}
 
 	UpdateAmmo();
+
 }

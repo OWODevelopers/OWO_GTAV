@@ -11,6 +11,7 @@ class SensationsCollection
 public:
 	static const string Default;
 	static const string Death;
+	static const string Warning;
 
 	// Impacts
 	static const string Bullet;
@@ -27,8 +28,8 @@ public:
 	static const string Shoot;
 	static const string Shotgun;
 	static const string SMG;
-	static const string Warning;
-
+	static const string Assault;
+	static const string Launcher;
 
 
 	static owoVector<owoString> All;

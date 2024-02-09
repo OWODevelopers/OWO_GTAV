@@ -23,7 +23,7 @@ int main() {
 	auto vehicle = std::shared_ptr<GTAVehicle>(new GTAVehicle());
 	auto feelDamage = FeelDamage(instance, player);
 	auto feelRecoil = FeelRecoil(instance, inventory, {SensationOfWeapons::Pistol(),  SensationOfWeapons::SMG(), SensationOfWeapons::Heavy(), SensationOfWeapons::MiniGun(), SensationOfWeapons::Shotgun()});
-	auto feelDriving = FeelDriving(instance, vehicle, IntensityLerp(2, 50, 10, 50), IntensityLerp(10, 50, 20, 90), IntensityLerp(1, 6, 40, 90));
+	auto feelDriving = FeelDriving(instance, vehicle, IntensityLerp(2, 50, 10, 50), IntensityLerp(10, 50, 10, 50), IntensityLerp(1.5, 25, 5, 15));
 	Debug::Start();
 
 	bool isDead = false;
