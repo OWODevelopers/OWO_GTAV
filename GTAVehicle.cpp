@@ -2,6 +2,7 @@
 #include "script.h"
 #include <corecrt_math.h>
 #include <exception>
+#include "Debug.h"
 
 double magnitude(double x, double y, double z) {
     return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
@@ -26,5 +27,5 @@ bool GTAVehicle::IsDriving()
 
 int GTAVehicle::SteeringAmount()
 {
-    throw std::exception("");
+    return ENTITY::GET_ENTITY_SPEED_VECTOR(PED::GET_VEHICLE_PED_IS_IN(PLAYER::PLAYER_PED_ID(), FALSE), TRUE).x;
 }
