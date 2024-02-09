@@ -14,7 +14,7 @@ void FeelDriving::Execute()
 
 	if (!CanFeelDriving()) return;
 
-	device->Send(DrivingSensation());
+	device->Send(Sensation());
 	lastVelocity = vehicle->Velocity();
 }
 
@@ -35,12 +35,24 @@ bool FeelDriving::CanFeelDriving()
 	return DidImpact() || vehicle->Velocity() > 0;
 }
 
-uniquePtr<OWOGame::Sensation> FeelDriving::DrivingSensation()
+uniquePtr<OWOGame::Sensation> FeelDriving::Sensation()
 {
 	if (DidImpact())
-		return OWOGame::SensationsFactory::Create(100, .1f, ImpactIntensity())->WithMuscles(OWOGame::MusclesGroup::All());
+		return ImpactSensation();
 
-	return OWOGame::SensationsFactory::Create(100, .1f)->WithMuscles(SteeringMuscles());
+	return DrivingSensation();
+}
+
+uniquePtr<OWOGame::Sensation> FeelDriving::DrivingSensation()
+{
+	auto result = OWOGame::SensationsFactory::Create(100, .1f)->WithMuscles(SteeringMuscles());
+	result->SetPriority(Priority);
+	return result;
+}
+
+uniquePtr<OWOGame::Sensation> FeelDriving::ImpactSensation()
+{
+	return OWOGame::SensationsFactory::Create(100, .1f, ImpactIntensity())->WithMuscles(OWOGame::MusclesGroup::All());
 }
 
 int FeelDriving::ImpactIntensity()
