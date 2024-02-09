@@ -1,4 +1,5 @@
 #include "Muscle.h"
+#include "Muscle.h"
 
 owoString OWOGame::Muscle::ToString()
 {
@@ -19,3 +20,8 @@ OWOGame::Muscle OWOGame::Muscle::Dorsal_R() { return  OWOGame::Muscle(6, 100); }
 OWOGame::Muscle OWOGame::Muscle::Dorsal_L() { return  OWOGame::Muscle(7, 100); }
 OWOGame::Muscle OWOGame::Muscle::Lumbar_R() { return  OWOGame::Muscle(8, 100); }
 OWOGame::Muscle OWOGame::Muscle::Lumbar_L() { return  OWOGame::Muscle(9, 100); }
+
+OWOGame::Muscle OWOGame::Muscle::operator+(Muscle addend)
+{
+    return Muscle(position).WithIntensity(intensity + addend.intensity);
+}

@@ -23,8 +23,11 @@ bool FeelDriving::DidImpact()
 
 OWOGame::MusclesGroup FeelDriving::SteeringMuscles()
 {
-	return vehicle->DrivingForward() ? OWOGame::MusclesGroup::Back() : OWOGame::MusclesGroup::Front();
-}
+	auto muscles = vehicle->DrivingForward() ? OWOGame::MusclesGroup::Back() : OWOGame::MusclesGroup::Front();
+	std::vector<OWOGame::Muscle> result = {};
+
+	return muscles;
+}	
 
 bool FeelDriving::CanFeelDriving()
 {

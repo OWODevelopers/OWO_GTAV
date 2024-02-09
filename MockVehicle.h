@@ -19,4 +19,5 @@ public:
 	int Velocity() override;
 	bool DrivingForward() override;
 	bool IsDriving() override;
+	int SteeringAmount() override;
 };

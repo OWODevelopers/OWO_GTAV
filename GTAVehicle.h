@@ -6,4 +6,5 @@ class GTAVehicle : public OWOVehicle
 	int Velocity() override;
 	bool DrivingForward() override;
 	bool IsDriving() override;
+	int SteeringAmount() override;
 };

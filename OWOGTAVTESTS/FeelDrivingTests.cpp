@@ -168,5 +168,10 @@ namespace OWOGTAVTESTS
 
 			Assert::IsTrue(mock->IntensityOf(OWOGame::Muscle::Arm_R()));
 		}
+
+		TEST_METHOD(apifdhdf) {
+
+			Assert::AreEqual(Muscle::Pectoral_R().WithIntensity(30).ToString(), (Muscle::Pectoral_R().WithIntensity(20) + Muscle::Pectoral_R().WithIntensity(10)).ToString());
+		}
 	};
 }

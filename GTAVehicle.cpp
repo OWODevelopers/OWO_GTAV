@@ -1,6 +1,7 @@
 #include "GTAVehicle.h"
 #include "script.h"
 #include <corecrt_math.h>
+#include <exception>
 
 double magnitude(double x, double y, double z) {
     return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
@@ -21,4 +22,9 @@ bool GTAVehicle::DrivingForward()
 bool GTAVehicle::IsDriving()
 {
     return PED::GET_VEHICLE_PED_IS_IN(PLAYER::PLAYER_PED_ID(), false) != 0;
+}
+
+int GTAVehicle::SteeringAmount()
+{
+    throw std::exception("");
 }

@@ -39,3 +39,8 @@ bool MockVehicle::IsDriving()
 {
 	return isDriving;
 }
+
+int MockVehicle::SteeringAmount()
+{
+	return steer;
+}

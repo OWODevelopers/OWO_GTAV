@@ -27,5 +27,7 @@ namespace OWOGame
         static Muscle Dorsal_L();
         static Muscle Lumbar_R();
         static Muscle Lumbar_L();
+
+        Muscle operator+(Muscle addend);
     };
 }
