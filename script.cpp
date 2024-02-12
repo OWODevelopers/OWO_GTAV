@@ -58,7 +58,7 @@ int main() {
 
 		instance->UpdateStatus(GetTickCount64());
 
-		WAIT(80);
+		WAIT(100);
 	}
 
 	return 0;
