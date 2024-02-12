@@ -9,6 +9,8 @@ using namespace OWOGame;
 class SensationsCollection
 {
 public:
+	static const string AuthId;
+
 	static const string Default;
 	static const string Death;
 	static const string Warning;

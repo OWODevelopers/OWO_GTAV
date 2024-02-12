@@ -1,6 +1,8 @@
 #include "SensationsCollection.h"
 #include "OWOAPI/Domain/SensationsParser.h"
 
+const string SensationsCollection::AuthId = "90113769";
+
 const string SensationsCollection::Default = "6~Deafult~40,1,50,0,0,2,|9%100,8%100,0%100,1%100,2%100,3%100,4%100,5%100,6%100,7%100&40,1,40,0,0,0,|9%100,8%100,0%100,1%100,2%100,3%100,4%100,5%100,6%100,7%100~impact-7~Impacts";
 const string SensationsCollection::Bullet = "2~Bullet~30,1,100,0,0,0,&65,4,100,0,400,0,~impact-8~Impacts";
 const string SensationsCollection::Drowning = "5~Drown~100,2,80,100,100,0,|0%100,1%100,3%70,2%71~environment-0~Impacts";
@@ -68,5 +70,5 @@ sharedPtr<GameAuth> SensationsCollection::Auth()
         sensations << sensation << "#";
     }
 
-    return GameAuth::Parse(sensations.str(), "0");
+    return GameAuth::Parse(sensations.str(), AuthId);
 }
