@@ -23,21 +23,21 @@ const string SensationsCollection::Death = "15~Death~100,1,60,0,0,1,|0%100,1%100
 
 owoVector<owoString> SensationsCollection::All =
 {
-    Default,
+    Warning,
+    Melee,
     Bullet,
-    Drowning,
     Explosive,
     Fall,
-    Heavy,
-    Melee,
-    Pistol,
-    Shoot,
-    Shotgun,
+    Drowning,
+    Default,
     Vehicle,
+    Pistol,
     SMG,
+    Shotgun,
+    Heavy,
+    Shoot,
     Assault,
     Launcher,
-    Warning,
     Death
 };
 
