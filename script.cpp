@@ -64,7 +64,7 @@ int main() {
 			instance->Disconnect();
 		}
 
-		WAIT(100);
+		WAIT(80);
 	}
 
 	return 0;
