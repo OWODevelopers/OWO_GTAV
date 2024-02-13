@@ -58,6 +58,12 @@ int main() {
 
 		instance->UpdateStatus(GetTickCount64());
 
+		if (IsKeyDown(VK_F2))
+		{
+			Debug::Log("Disconnect...");
+			instance->Disconnect();
+		}
+
 		WAIT(100);
 	}
 
