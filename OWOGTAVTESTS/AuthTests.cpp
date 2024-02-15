@@ -9,8 +9,6 @@ namespace OWOGTAVTESTS
 	TEST_CLASS(AuthTests)
 	{
 	public:
-
-
 		TEST_METHOD(Generate_auth)
 		{
 			auto auth = SensationsCollection::Auth()->ToString();

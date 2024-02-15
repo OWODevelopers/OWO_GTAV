@@ -9,10 +9,7 @@ private:
 	static CConsoleLoggerEx logger;
 	static bool isLogging;
 
-	static bool Exists(const std::string& name) {
-        struct stat buffer;
-        return (stat(name.c_str(), &buffer) == 0);
-    }
+	
 
 	static std::string LoggerPath() {
 		PWSTR path;
@@ -28,8 +25,13 @@ private:
 	}
 
 public:
+	static bool Exists() {
+		struct stat buffer;
+		return (stat(LoggerPath().c_str(), &buffer) == 0);
+	}
+
 	static void Start() {
-		if(Exists(LoggerPath())) return;
+		if(!Exists()) return;
 
 		isLogging = true;
 		logger.Create("Logger");
