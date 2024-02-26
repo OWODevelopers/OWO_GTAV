@@ -48,6 +48,9 @@
     <ClCompile Include="AuthTests.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="DebugLoggerTests.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HapticDevice.h">

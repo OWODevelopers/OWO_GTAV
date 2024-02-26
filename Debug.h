@@ -9,9 +9,6 @@ private:
 	static CConsoleLoggerEx logger;
 	static bool isLogging;
 
-	
-
-public:
 	static std::string LoggerPath() {
 		PWSTR path;
 		SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, NULL, &path);
@@ -21,17 +18,16 @@ public:
 
 		std::string loggerPath = pathBuffer;
 		loggerPath += "/FiveM/FiveM.app/plugins/ConsoleLoggerHelper.exe";
-
 		return loggerPath;
 	}
-
-	static bool Exists(const std::string& name) {
+public:
+	static bool Exists() {
 		struct stat buffer;
-		return (stat(name.c_str(), &buffer) == 0);
+		return (stat(LoggerPath().c_str(), &buffer) == 0);
 	}
 
 	static void Start() {
-		if(!Exists(LoggerPath())) return;
+		if(!Exists()) return;
 
 		isLogging = true;
 		logger.Create("Logger");

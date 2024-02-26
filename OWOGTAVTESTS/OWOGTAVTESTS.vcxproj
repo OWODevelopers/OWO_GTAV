@@ -163,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="..\MockVehicle.cpp" />
     <ClCompile Include="AuthTests.cpp" />
+    <ClCompile Include="DebugLoggerTests.cpp" />
     <ClCompile Include="FeelDrivingTests.cpp" />
     <ClCompile Include="HapticDevice.cpp" />
     <ClCompile Include="MockBody.cpp" />
