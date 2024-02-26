@@ -31,4 +31,7 @@
     <ClInclude Include="IntensityLerp.h" />
     <ClInclude Include="SensationsCollection.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
 </Project>

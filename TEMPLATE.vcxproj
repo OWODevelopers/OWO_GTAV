@@ -46,6 +46,9 @@
       <Project>{08291a50-7232-4e8f-b836-3a4423c2eb95}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8D82F34A-1D64-465B-84B1-37F89AD3D20B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -81,7 +84,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.asi</TargetExt>
-    <OutDir>$(LOCALAPPDATA)\FiveM\FiveM.app\plugins</OutDir>
+    <OutDir>./</OutDir>
     <IntDir>tmp\$(Configuration)\</IntDir>
     <PublicIncludeDirectories>$(AdditionalIncludeDirectories);$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
