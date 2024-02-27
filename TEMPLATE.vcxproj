@@ -20,6 +20,34 @@
     <ClCompile Include="GTAVehicle.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OWOAPI\ClientFactory.cpp" />
+    <ClCompile Include="OWOAPI\Controller\Authenticate.cpp" />
+    <ClCompile Include="OWOAPI\Controller\Client.cpp" />
+    <ClCompile Include="OWOAPI\Controller\FindServer.cpp" />
+    <ClCompile Include="OWOAPI\Controller\NotifyAbscense.cpp" />
+    <ClCompile Include="OWOAPI\Controller\OWO.cpp" />
+    <ClCompile Include="OWOAPI\Controller\ScanAvailableServers.cpp" />
+    <ClCompile Include="OWOAPI\Controller\SecretKeysVault.cpp" />
+    <ClCompile Include="OWOAPI\Controller\SendAuthMessage.cpp" />
+    <ClCompile Include="OWOAPI\Controller\SendEncryptedMessage.cpp" />
+    <ClCompile Include="OWOAPI\Controller\SendSensation.cpp" />
+    <ClCompile Include="OWOAPI\Controller\StopSensation.cpp" />
+    <ClCompile Include="OWOAPI\Domain\BakedSensation.cpp" />
+    <ClCompile Include="OWOAPI\Domain\BakedSensationsParser.cpp" />
+    <ClCompile Include="OWOAPI\Domain\GameAuth.cpp" />
+    <ClCompile Include="OWOAPI\Domain\Microsensation.cpp" />
+    <ClCompile Include="OWOAPI\Domain\MicroSensationParser.cpp" />
+    <ClCompile Include="OWOAPI\Domain\Muscle.cpp" />
+    <ClCompile Include="OWOAPI\Domain\MusclesGroup.cpp" />
+    <ClCompile Include="OWOAPI\Domain\MusclesParser.cpp" />
+    <ClCompile Include="OWOAPI\Domain\SensationsBaker.cpp" />
+    <ClCompile Include="OWOAPI\Domain\SensationsFactory.cpp" />
+    <ClCompile Include="OWOAPI\Domain\SensationsParser.cpp" />
+    <ClCompile Include="OWOAPI\Domain\SensationsSequence.cpp" />
+    <ClCompile Include="OWOAPI\Domain\SensationsSequenceParser.cpp" />
+    <ClCompile Include="OWOAPI\Domain\SensationWithMuscles.cpp" />
+    <ClCompile Include="OWOAPI\Domain\SensationWithMusclesParser.cpp" />
+    <ClCompile Include="OWOAPI\Infraestructure\UDPNetwork.cpp" />
     <ClCompile Include="script.cpp" />
     <ClCompile Include="FeelDamage.cpp" />
     <ClCompile Include="SensationOfWeapons.cpp" />
@@ -32,6 +60,42 @@
     <ClInclude Include="GTAInventory.h" />
     <ClInclude Include="GTAPlayer.h" />
     <ClInclude Include="keyboard.h" />
+    <ClInclude Include="OWOAPI\ClientFactory.h" />
+    <ClInclude Include="OWOAPI\Controller\Authenticate.h" />
+    <ClInclude Include="OWOAPI\Controller\Client.h" />
+    <ClInclude Include="OWOAPI\Controller\FindServer.h" />
+    <ClInclude Include="OWOAPI\Controller\Message.h" />
+    <ClInclude Include="OWOAPI\Controller\Network.h" />
+    <ClInclude Include="OWOAPI\Controller\NotifyAbscense.h" />
+    <ClInclude Include="OWOAPI\Controller\OWO.h" />
+    <ClInclude Include="OWOAPI\Controller\ScanAvailableServers.h" />
+    <ClInclude Include="OWOAPI\Controller\SecretKeysVault.h" />
+    <ClInclude Include="OWOAPI\Controller\SendAuthMessage.h" />
+    <ClInclude Include="OWOAPI\Controller\SendEncryptedMessage.h" />
+    <ClInclude Include="OWOAPI\Controller\SendSensation.h" />
+    <ClInclude Include="OWOAPI\Controller\StopSensation.h" />
+    <ClInclude Include="OWOAPI\Domain\BakedSensation.h" />
+    <ClInclude Include="OWOAPI\Domain\BakedSensationsParser.h" />
+    <ClInclude Include="OWOAPI\Domain\Exceptions.h" />
+    <ClInclude Include="OWOAPI\Domain\GameAuth.h" />
+    <ClInclude Include="OWOAPI\Domain\Math.h" />
+    <ClInclude Include="OWOAPI\Domain\Microsensation.h" />
+    <ClInclude Include="OWOAPI\Domain\MicroSensationParser.h" />
+    <ClInclude Include="OWOAPI\Domain\Muscle.h" />
+    <ClInclude Include="OWOAPI\Domain\MusclesGroup.h" />
+    <ClInclude Include="OWOAPI\Domain\MusclesParser.h" />
+    <ClInclude Include="OWOAPI\Domain\OWOTypes.h" />
+    <ClInclude Include="OWOAPI\Domain\Sensation.h" />
+    <ClInclude Include="OWOAPI\Domain\SensationsBaker.h" />
+    <ClInclude Include="OWOAPI\Domain\SensationsFactory.h" />
+    <ClInclude Include="OWOAPI\Domain\SensationsParser.h" />
+    <ClInclude Include="OWOAPI\Domain\SensationsSequence.h" />
+    <ClInclude Include="OWOAPI\Domain\SensationsSequenceParser.h" />
+    <ClInclude Include="OWOAPI\Domain\SensationWithMuscles.h" />
+    <ClInclude Include="OWOAPI\Domain\SensationWithMusclesParser.h" />
+    <ClInclude Include="OWOAPI\Domain\String.h" />
+    <ClInclude Include="OWOAPI\Infraestructure\UDPNetwork.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SensationOfWeapons.h" />
     <ClInclude Include="PlayerBody.h" />
     <ClInclude Include="PlayerInventory.h" />
@@ -40,11 +104,6 @@
     <ClInclude Include="SensationsCollection.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="IntensityLerp.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="OWOAPI\OWOAPI.vcxproj">
-      <Project>{08291a50-7232-4e8f-b836-3a4423c2eb95}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -84,7 +143,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.asi</TargetExt>
-    <OutDir>./</OutDir>
+    <OutDir>$(LOCALAPPDATA)\FiveM\FiveM.app\plugins</OutDir>
     <IntDir>tmp\$(Configuration)\</IntDir>
     <PublicIncludeDirectories>$(AdditionalIncludeDirectories);$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>

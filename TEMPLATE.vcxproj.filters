@@ -14,6 +14,90 @@
     <ClCompile Include="FeelDriving.cpp" />
     <ClCompile Include="SensationsCollection.cpp" />
     <ClCompile Include="GTAVehicle.cpp" />
+    <ClCompile Include="OWOAPI\Controller\Authenticate.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\Client.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\FindServer.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\NotifyAbscense.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\OWO.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\ScanAvailableServers.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\SecretKeysVault.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\SendAuthMessage.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\SendEncryptedMessage.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\SendSensation.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Controller\StopSensation.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\BakedSensation.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\BakedSensationsParser.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\GameAuth.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\Microsensation.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\MicroSensationParser.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\Muscle.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\MusclesGroup.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\MusclesParser.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\SensationsBaker.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\SensationsFactory.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\SensationsParser.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\SensationsSequence.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\SensationsSequenceParser.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\SensationWithMuscles.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Domain\SensationWithMusclesParser.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\Infraestructure\UDPNetwork.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="OWOAPI\ClientFactory.cpp">
+      <Filter>OWOAPI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
@@ -30,6 +114,117 @@
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="IntensityLerp.h" />
     <ClInclude Include="SensationsCollection.h" />
+    <ClInclude Include="OWOAPI\Controller\Authenticate.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\Client.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\FindServer.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\Message.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\Network.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\NotifyAbscense.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\OWO.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\ScanAvailableServers.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\SecretKeysVault.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\SendAuthMessage.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\SendEncryptedMessage.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\SendSensation.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Controller\StopSensation.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\BakedSensation.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\BakedSensationsParser.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\Exceptions.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\GameAuth.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\Math.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\Microsensation.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\MicroSensationParser.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\Muscle.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\MusclesGroup.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\MusclesParser.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\OWOTypes.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\Sensation.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\SensationsBaker.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\SensationsFactory.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\SensationsParser.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\SensationsSequence.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\SensationsSequenceParser.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\SensationWithMuscles.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\SensationWithMusclesParser.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Domain\String.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\Infraestructure\UDPNetwork.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OWOAPI\ClientFactory.h">
+      <Filter>OWOAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="OWOAPI">
+      <UniqueIdentifier>{49ab32b5-9eb9-4c8a-8650-d33180eed539}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
